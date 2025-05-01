@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "./ui/button";
+import { Button } from "../components/ui/Button";
 import { GalleryHorizontal } from "lucide-react";
 import kids from "../assets/kids.png";
 import training from "../assets/traning.png";

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "./ui/button";
+import { Button } from "../components/ui/Button";
 import { Video, Play } from "lucide-react";
 import { cn } from "../lib/utils";
 import v1 from "../assets/technical.mp4";
