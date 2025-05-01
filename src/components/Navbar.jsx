@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "./Ui/button";
+import { Button } from "@/components/ui/button";
 import logo from "../assets/SWIMMING_logo.png";
 
 const Navbar = () => {
