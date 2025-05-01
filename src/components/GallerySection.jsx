@@ -5,7 +5,7 @@ import { GalleryHorizontal } from "lucide-react";
 import kids from "../assets/kids.png";
 import training from "../assets/traning.png";
 import competition from "../assets/sw1.jpg";
-import facilities from "../assets/facilities.png";
+import facilities from "../assets/Facilities.png";
 import events from "../assets/Event.jpg";
 import kid1 from "../assets/kid1.png";
 
