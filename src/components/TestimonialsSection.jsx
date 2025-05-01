@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card } from "./Ui/card";
+import { Card } from "./ui/card";
 import teacher1 from "../assets/teacher1.jpg";
 import teacher2 from "../assets/teacher2.jpg";
 import teacher3 from "../assets/teacher3.jpg";
