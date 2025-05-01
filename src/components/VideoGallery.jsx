@@ -152,7 +152,7 @@ const VideoGallery = () => {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="w-full"
+                  className="w-full card"
                   onClick={() => setActiveVideo(video)}
                 >
                   <Video size={16} className="mr-2" />

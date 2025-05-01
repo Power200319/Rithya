@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "../components/ui/button";
+import { Button } from "./ui/button";
 import { Card } from "../components/ui/card";
 import basic from "../assets/basic.jpg";
 import advaned from "../assets/advaned.png";
@@ -170,9 +170,9 @@ const ProgramsSection = () => {
                 <Button
                   asChild
                   variant="outline"
-                  className="w-full border-aqua-500 text-aqua-600 button"
+                  className="w-full border-aqua-500 text-aqua-600 card text-body"
                 >
-                  <Link to={`/programs/${program.id}`}>Learn More</Link>
+                  <Link to={`/programs/${program.id}`}>មើលបន្ថែម</Link>
                 </Button>
               </div>
             </Card>
@@ -181,10 +181,7 @@ const ProgramsSection = () => {
 
         {/* View All Button */}
         <div className="text-center mt-12 text-white">
-          <Button
-            asChild
-            className="bg-navy-700 hover  px-8​ text-body"
-          >
+          <Button asChild className="bg-navy-700 hover px-8​ text-body">
             <Link to="/programs">មើលទាំងអស់</Link>
           </Button>
         </div>

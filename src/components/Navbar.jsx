@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "../components/ui/button";
-import logo from "../assets/SWIMMING_logo.png"; 
+import { Button } from "./ui/button";
+import logo from "../assets/SWIMMING_logo.png";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,7 +35,11 @@ const Navbar = () => {
           onClick={() => setIsMobileMenuOpen(false)}
         >
           {/* Logo */}
-          <img src={logo} alt="Logo" className="w-12 h-12 object-cover rounded-3xl border-2 border-sky-500" />
+          <img
+            src={logo}
+            alt="Logo"
+            className="w-12 h-12 object-cover rounded-3xl border-2 border-sky-500"
+          />
 
           {/* School Name */}
           <div className="grid grid-cols-1 gap-0 leading-tight">

@@ -1,8 +1,16 @@
 import { useState } from "react";
-import { Button } from "../components/ui/button";
+import { Button } from "./ui/button";
 import { Clock } from "lucide-react";
 
-const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+const weekDays = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+];
 
 const timeSlots = [
   {
@@ -74,9 +82,12 @@ const ScheduleSection = () => {
     <section id="schedule" className="section-padding bg-white">
       <div className="container mx-auto px-4 py-10">
         <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 gradient-text​ text-head text-aqua-500">ថ្នាក់បង្រៀនហែលទឹកកម្រិតមូលដ្ឋាន ដល់កម្រិតខ្ពស់</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 gradient-text​ text-head text-aqua-500">
+            ថ្នាក់បង្រៀនហែលទឹកកម្រិតមូលដ្ឋាន ដល់កម្រិតខ្ពស់
+          </h2>
           <p className="text-gray-700 text-xl max-w-3xl mx-auto text-body text-aqua-400">
-          កាលវិភាគ សម្រាប់ការហ្វឹកហាត់​ ថ្ងៃចន្ទដល់សុក្រ និង​ ថ្ងៃសៅរ៍ដល់​អាទិត្យ
+            កាលវិភាគ សម្រាប់ការហ្វឹកហាត់​ ថ្ងៃចន្ទដល់សុក្រ និង​
+            ថ្ងៃសៅរ៍ដល់​អាទិត្យ
           </p>
           <div className="w-24 h-1 bg-aqua-500 mx-auto mb-6 mt-4"></div>
         </div>
@@ -113,37 +124,46 @@ const ScheduleSection = () => {
               <tr className="bg-navy-700 text-white">
                 <th className="py-3 px-4 text-left">Time</th>
                 {weekDays
-                  .filter(day => visibleDays.includes(day))
-                  .map(day => (
-                    <th key={day} className="py-3 px-4 text-left">{day}</th>
+                  .filter((day) => visibleDays.includes(day))
+                  .map((day) => (
+                    <th key={day} className="py-3 px-4 text-left">
+                      {day}
+                    </th>
                   ))}
               </tr>
             </thead>
             <tbody>
               {timeSlots.map((slot, index) => (
-                <tr key={slot.time} className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
+                <tr
+                  key={slot.time}
+                  className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}
+                >
                   <td className="py-3 px-4 border-t flex items-center">
                     <Clock size={16} className="text-aqua-500 mr-2" />
                     <span>{slot.time}</span>
                   </td>
                   {weekDays
-                    .filter(day => visibleDays.includes(day))
-                    .map(day => {
+                    .filter((day) => visibleDays.includes(day))
+                    .map((day) => {
                       const classInfo = slot.classes[day];
                       return (
                         <td key={day} className="py-3 px-4 border-t">
                           {classInfo ? (
                             <div>
-                              <div className="font-medium text-navy-700">{classInfo.name}</div>
-                              <div className={`text-xs mt-1 inline-block px-2 py-1 rounded-full ${
-                                classInfo.level === "Beginner" 
-                                  ? "bg-green-100 text-green-800" 
-                                  : classInfo.level === "Intermediate" 
-                                    ? "bg-yellow-100 text-yellow-800" 
+                              <div className="font-medium text-navy-700">
+                                {classInfo.name}
+                              </div>
+                              <div
+                                className={`text-xs mt-1 inline-block px-2 py-1 rounded-full ${
+                                  classInfo.level === "Beginner"
+                                    ? "bg-green-100 text-green-800"
+                                    : classInfo.level === "Intermediate"
+                                    ? "bg-yellow-100 text-yellow-800"
                                     : classInfo.level === "Advanced"
-                                      ? "bg-red-100 text-red-800"
-                                      : "bg-blue-100 text-blue-800"
-                              }`}>
+                                    ? "bg-red-100 text-red-800"
+                                    : "bg-blue-100 text-blue-800"
+                                }`}
+                              >
                                 {classInfo.level}
                               </div>
                             </div>
@@ -152,17 +172,25 @@ const ScheduleSection = () => {
                           )}
                         </td>
                       );
-                  })}
+                    })}
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-4 mt-5 text-body text-center">
-          <h3 className="bg-aqua-500 text-white p-1.5 rounded-lg">ថ្នាក់គ្រូ១នាក់ សិស្ស១នាក់ ១២០$</h3>
-          <h3 className="bg-aqua-500 text-white p-1.5 rounded-lg">ថ្នាក់គ្រូ១នាក់ សិស្ស២នាក់ ២៣០$</h3>
-          <h3 className="bg-aqua-500 text-white p-1.5 rounded-lg">ថ្នាក់គ្រូ១នាក់ សិស្ស៣នាក់ ៣៣០$</h3>
-          <h3 className="bg-aqua-500 text-white p-1.5 rounded-lg">ថ្នាក់គ្រូ១នាក់ សិស្ស៤នាក់ ៤២០$</h3>
+          <h3 className="bg-aqua-500 text-white p-1.5 rounded-lg">
+            ថ្នាក់គ្រូ១នាក់ សិស្ស១នាក់ ១២០$
+          </h3>
+          <h3 className="bg-aqua-500 text-white p-1.5 rounded-lg">
+            ថ្នាក់គ្រូ១នាក់ សិស្ស២នាក់ ២៣០$
+          </h3>
+          <h3 className="bg-aqua-500 text-white p-1.5 rounded-lg">
+            ថ្នាក់គ្រូ១នាក់ សិស្ស៣នាក់ ៣៣០$
+          </h3>
+          <h3 className="bg-aqua-500 text-white p-1.5 rounded-lg">
+            ថ្នាក់គ្រូ១នាក់ សិស្ស៤នាក់ ៤២០$
+          </h3>
         </div>
         <div className="mt-8 text-center text-white">
           <Button asChild className="bg-navy-700 hover text-body">
