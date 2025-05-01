@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "./ui/button";
+import { Button } from "./Ui/button";
 import { Clock } from "lucide-react";
 
 const weekDays = [

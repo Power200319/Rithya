@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "./ui/button";
-import { Card } from "../components/ui/card";
+import { Button } from "./Ui/button";
+import { Card } from "./Ui/card";
 import basic from "../assets/basic.jpg";
 import advaned from "../assets/advaned.png";
 import intermediate from "../assets/intermedia.png";
