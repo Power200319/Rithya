@@ -5,6 +5,24 @@
   margin: 0;
   padding: 0;
 }
+.nav-desktop {
+  display: none;
+}
+
+.nav-mobile {
+  display: block;
+}
+
+/* ✅ Custom breakpoint for width >= 1110px */
+@media (min-width: 1110px) {
+  .nav-desktop {
+    display: flex;
+  }
+
+  .nav-mobile {
+    display: none;
+  }
+}
 
 .card {
   /* background: #111; */
@@ -15,23 +33,23 @@
   overflow: hidden;
   border-radius: 15px;
   transition: all 0.5s ease;
-  
+
   /* color: #0ff; */
   z-index: 2;
 }
 
 .card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
   background: linear-gradient(
-    0deg, 
-    transparent, 
-    transparent 30%, 
-    rgba(0,255,255,0.3)
+    0deg,
+    transparent,
+    transparent 30%,
+    rgba(0, 255, 255, 0.3)
   );
   transform: rotate(-45deg);
   transition: all 0.5s ease;
@@ -40,14 +58,13 @@
 
 .card:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(0,255,255,0.5);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
 }
 
 .card:hover::before {
   opacity: 1;
   transform: rotate(-45deg) translateY(100%);
 }
-
 
 .text-head {
   font-family: "Moul", serif;
@@ -113,7 +130,6 @@
   border-radius: 10px;
   border-color: 20px solid rgb(141, 26, 26);
   background-size: cover;
-
 }
 
 /* Custom Properties (CSS Variables) */

@@ -61,7 +61,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8 text-body">
+        <nav className="nav-desktop items-center space-x-8 text-body">
           {[
             "ទំព័រដើម",
             "អំពីយើង",
@@ -89,7 +89,7 @@ const Navbar = () => {
         </nav>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden">
+        <div className="nav-mobile">
           <button
             onClick={toggleMobileMenu}
             className={`p-2 ${isScrolled ? "text-navy-700" : "text-white"}`}
@@ -123,7 +123,7 @@ const Navbar = () => {
 
       {/* Mobile Navigation Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg animate-fade-in">
+        <div className="nav-mobile bg-white shadow-lg animate-fade-in">
           <div className="container mx-auto px-4 py-4">
             <div className="flex flex-col space-y-4 text-body">
               {[
