@@ -90,7 +90,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <div className="nav-mobile">
-          <button
+          {/* <button
             onClick={toggleMobileMenu}
             className={`p-2 ${isScrolled ? "text-navy-700" : "text-white"}`}
           >
@@ -117,42 +117,20 @@ const Navbar = () => {
                 />
               )}
             </svg>
-          </button>
+          </button> */}
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeh_IBmsqMSXlCWiLvPopAI7wB_B9KHF3Sh6zVgzU9pwo8-pQ/viewform?usp=sharing">
+            <Button className="bg-aqua-500 hover:bg-aqua-600 text-white w-full py-5 justify-center">
+              <span className="text-body1 w-11 text-sm">
+                ចុះឈ្មោះ
+                <br />
+                Register
+              </span>
+            </Button>
+          </a>
         </div>
       </div>
 
       {/* Mobile Navigation Menu */}
-      {isMobileMenuOpen && (
-        <div className="nav-mobile bg-white shadow-lg animate-fade-in">
-          <div className="container mx-auto px-4 py-4">
-            <div className="flex flex-col space-y-4 text-body">
-              {[
-                "ទំព័រដើម",
-                "អំពីយើង",
-                "កម្មវិធីសិក្សា",
-                "កាលវិភាគ",
-                "រូបភាព",
-                "វីដេអូ",
-                "ទំនាក់ទំនង",
-              ].map((item) => (
-                <Link
-                  key={item}
-                  to={item === "ទំព័រដើម" ? "/" : `/${item.toLowerCase()}`}
-                  className="text-navy-700 font-medium py-2 hover:text-aqua-500 transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item}
-                </Link>
-              ))}
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSeh_IBmsqMSXlCWiLvPopAI7wB_B9KHF3Sh6zVgzU9pwo8-pQ/viewform?usp=sharing">
-                <Button className="bg-aqua-500 hover:bg-aqua-600 text-white w-full">
-                  <span className="text-body">ចុះឈ្មោះឥឡូវ</span>
-                </Button>
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
     </header>
   );
 };

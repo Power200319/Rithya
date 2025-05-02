@@ -7,6 +7,8 @@ import ScheduleSection from '../components/ScheduleSection'
 import GallerySection from '../components/GallerySection'
 import TestimonialsSection from '../components/TestimonialsSection'
 import VideoGallery from '../components/VideoGallery'
+import ContactSection from '../components/ContactSection'
+import Footer from '../components/Footer'
 
 const index = () => {
   return (
@@ -19,6 +21,8 @@ const index = () => {
     <GallerySection />
     <VideoGallery />
     <TestimonialsSection />
+    <ContactSection />
+    <Footer />
     </>
   )
 }

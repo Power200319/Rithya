@@ -75,8 +75,8 @@ const VideoGallery = () => {
           </h2>
           <div className="w-24 h-1 bg-aqua-500 mx-auto mb-6"></div>
         </div>
-
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
+       {/* Fillter */}
+        <div className="hidden md:flex flex-wrap justify-center gap-3 mb-10">
           {categories.map((category) => (
             <button
               key={category}

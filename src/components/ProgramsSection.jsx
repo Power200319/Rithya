@@ -102,7 +102,7 @@ const ProgramsSection = () => {
         </div>
 
         {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="hidden md:flex flex-wrap justify-center gap-4 mb-12">
           {filters.map((filter) => (
             <button
               key={filter.id}

@@ -69,7 +69,7 @@ const TestimonialsSection = () => {
               <img
                 src={topTestimonial.image}
                 alt={topTestimonial.name}
-                className=" hover:scale-105 transition-transform duration-300 object-cover"
+                className=" hover:scale-115 transition-transform duration-300 object-contain rounded-full w-32 h-32 "
               />
             </div>
             <p className="font-semibold text-navy-800 text-center text-head mt-7">
@@ -94,7 +94,7 @@ const TestimonialsSection = () => {
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}
-                  className="hover:scale-105 transition-transform duration-300 object-cover"
+                  className="hover:scale-115 transition-transform duration-300 object-contain rounded-full w-32 h-32"
                 />
               </div>
               <p className="font-semibold text-navy-800 text-center text-head mt-7">

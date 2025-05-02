@@ -77,7 +77,7 @@ const GallerySection = () => {
         </div>
 
         {/* Category Filters */}
-        <div className="flex flex-wrap justify-center gap-3 mb-10 text-body">
+        <div className="hidden md:flex flex-wrap justify-center gap-3 mb-10 text-body">
           {categories.map((category) => (
             <button
               key={category}
