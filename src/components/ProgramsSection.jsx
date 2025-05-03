@@ -100,6 +100,7 @@ const ProgramsSection = () => {
           <div className="w-24 h-1 bg-aqua-500 mx-auto mb-6"></div>
         </div>
 
+        {/* Desktop Filters */}
         <div className="hidden md:flex flex-wrap justify-center gap-4 mb-12">
           {filters.map((filter) => (
             <button
@@ -116,16 +117,15 @@ const ProgramsSection = () => {
           ))}
         </div>
 
-        {/* Mobile View */}
-        <div className="block md:hidden w-full overflow-x-auto scroll-smooth pb-4 px-2 no-scrollbar">
-          <div className="flex gap-4 min-w-max">
+        {/* Mobile View with Horizontal Scroll */}
+        <div className="block md:hidden w-full overflow-x-auto scroll-smooth pb-4 no-scrollbar">
+          <div className="flex gap-4 min-w-max px-2">
             {filteredPrograms.map((program) => (
               <div
                 key={program.id}
-                className="min-w-[300px] flex-shrink-0 hover-scale mb-6​ text-body"
+                className="min-w-[300px] flex-shrink-0 text-body"
               >
                 <Card className="overflow-hidden">
-                  {/* Image with specific height and width */}
                   <div className="w-full h-[250px] overflow-hidden">
                     <img
                       src={program.image}
