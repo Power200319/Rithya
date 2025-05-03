@@ -1,5 +1,5 @@
 import { useState } from "react";
-import v1 from "../assets/technical1.mp4";
+import v1 from "../../public/video/technical1.mp4";
 import p1 from "../assets/about.png";
 
 const AboutSection = () => {
