@@ -47,7 +47,7 @@ const GallerySection = () => {
         </div>
 
         {/* Gallery Grid */}
-        <div className="flex gap-4 overflow-x-auto sm:grid sm:grid-cols-2 md:grid-cols-3 sm:gap-6 px-1 no-scrollbar snap-x snap-mandatory">
+        <div className="flex gap-4 overflow-x-auto sm:grid sm:grid-cols-2 md:grid-cols-3 sm:gap-6 px-1 snap-x snap-mandatory -webkit-overflow-scrolling-touch no-scrollbar">
           {filteredItems.map((item) => (
             <div
               key={item.id}
@@ -58,6 +58,7 @@ const GallerySection = () => {
                 alt={item.title}
                 loading="lazy"
                 className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                style={{ objectFit: "cover" }} // Explicitly set object-fit for consistency
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-0 w-full p-4 text-white flex items-center">
