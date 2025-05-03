@@ -71,7 +71,7 @@ const GallerySection = () => {
 
           <div
             ref={galleryRef}
-            className="flex gap-4 overflow-x-auto sm:grid sm:grid-cols-2 md:grid-cols-3 sm:gap-6 px-1 snap-x snap-mandatory -webkit-overflow-scrolling-touch no-scrollbar"
+            className="flex gap-4 overflow-hidden sm:grid sm:grid-cols-2 md:grid-cols-3 sm:gap-6 px-1 snap-x snap-mandatory no-scrollbar"
           >
             {filteredItems.map((item) => (
               <div
