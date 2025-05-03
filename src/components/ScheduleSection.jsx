@@ -130,7 +130,7 @@ const ScheduleSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-10">
             {trainingOptions.map((option, index) => (
               <div
-                className="flex justify-between items-center mb-2 bg-black text-body2 rounded-2xl  text-white shadow-lg cursor-pointer transform hover:scale-105 transition"
+                className="flex justify-between items-center mb-2 bg-black text-body2  rounded-2xl  text-white shadow-lg cursor-pointer transform hover:scale-105 transition"
                 onClick={() => setSelectedCard(option)}
               >
                 <div

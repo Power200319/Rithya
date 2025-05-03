@@ -2,12 +2,9 @@ import { useState } from "react";
 import { Button } from "../components/ui/Button";
 import { Video, Play } from "lucide-react";
 import { cn } from "../lib/utils";
-import v1 from "../assets/technical.mp4";
 import v2 from "../assets/technical1.mp4";
 import v3 from "../assets/event.mp4";
-import v4 from "../assets/lesson.mp4";
 import v5 from "../assets/lesson1.mp4";
-import v6 from "../assets/event2.mp4";
 
 const videoItems = [
   {
@@ -25,34 +22,11 @@ const videoItems = [
     category: "បច្ចេកទេស",
   },
   {
-    id: 3,
-    title: "Kids Swimming Lesson",
-    description:
-      "Watch how we teach young beginners in a fun and engaging environment.",
-    videoUrl: v4,
-    category: "មេរៀន",
-  },
-  {
     id: 4,
     title: "Swimming Club Championship",
     description: "Highlights from our annual swimming championship event.",
     videoUrl: v3,
     category: "ព្រឹត្តិការណ៍",
-  },
-  {
-    id: 5,
-    title: "Water Safety Tips",
-    description: "Essential water safety instructions for all swimmers.",
-    videoUrl: v6,
-    category: "មេរៀន",
-  },
-  {
-    id: 6,
-    title: "Breathing បច្ចេកទេស",
-    description:
-      "Improve your breathing pattern while swimming with these expert tips.",
-    videoUrl: v1,
-    category: "បច្ចេកទេស",
   },
 ];
 
@@ -86,7 +60,7 @@ const VideoGallery = () => {
               >
                 ✕
               </button>
-              <video controls autoPlay className="w-full h-auto">
+              <video controls autoPlay preload="none" className="w-full h-auto">
                 <source src={activeVideo.videoUrl} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>

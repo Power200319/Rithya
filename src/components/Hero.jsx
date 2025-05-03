@@ -21,6 +21,7 @@ const Hero = () => {
       <img
         src={images[currentIndex]}
         alt={`Slide ${currentIndex + 1}`}
+        loading="lazy"
         className="max-h-full max-w-full object-contain brightness-75 transition-all duration-1000"
       />
 

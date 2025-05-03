@@ -1,5 +1,5 @@
 import { useState } from "react";
-import v1 from "../assets/event2.mp4";
+import v1 from "../assets/technical1.mp4";
 import p1 from "../assets/about.png";
 
 const AboutSection = () => {
@@ -21,6 +21,7 @@ const AboutSection = () => {
             <img
               src={p1}
               alt="Instructor"
+              loading="lazy"
               className="w-full h-full object-contain"
             />
           </div>
@@ -55,6 +56,7 @@ const AboutSection = () => {
             loop
             muted
             playsInline
+            preload="none"
             className="w-full h-64 object-cover"
           >
             <source src={v1} type="video/mp4" />

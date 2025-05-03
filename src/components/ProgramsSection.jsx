@@ -94,7 +94,7 @@ const ProgramsSection = () => {
     <section id="programs" className="section-padding bg-gray-50">
       <div className="container mx-auto px-4 py-10">
         <div className="text-center mb-12">
-          <h2 className="text-2xl text-head text-aqua-500 md:text-3xl mb-4 gradient-text ">
+          <h2 className="text-2xl text-head text-aqua-500 md:text-3xl mb-4 gradient-text">
             កម្មវិធីបណ្តុះបណ្តាលហែលទឹក
           </h2>
           <div className="w-24 h-1 bg-aqua-500 mx-auto mb-6"></div>
@@ -117,13 +117,75 @@ const ProgramsSection = () => {
           ))}
         </div>
 
-        {/* Responsive Scrollable Cards */}
-        <div className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 overflow-x-auto md:overflow-visible scroll-smooth pb-4 no-scrollbar">
+        {/* Mobile: Horizontal scroll */}
+        <div className="block md:hidden overflow-x-auto scroll-smooth no-scrollbar pb-4">
+          <div className="flex gap-6 min-w-max">
+            {filteredPrograms.map((program) => (
+              <div
+                key={program.id}
+                className="min-w-[280px] flex-shrink-0 hover-scale"
+              >
+                <Card className="overflow-hidden">
+                  <div className="h-48 overflow-hidden">
+                    <img
+                      src={program.image}
+                      alt={program.title}
+                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex justify-between items-start mb-3">
+                      <h3 className="text-xl font-bold text-navy-800 text-body">
+                        {program.title}
+                      </h3>
+                      <span
+                        className={`text-xs font-semibold px-3 py-1 rounded-full ${
+                          program.level === "Basic"
+                            ? "bg-green-100 text-green-800"
+                            : program.level === "Intermediate"
+                            ? "bg-yellow-100 text-yellow-800"
+                            : program.level === "Advanced"
+                            ? "bg-blue-100 text-blue-800"
+                            : program.level === "Highest"
+                            ? "bg-red-100 text-red-800"
+                            : "bg-gray-100 text-gray-800"
+                        }`}
+                      >
+                        {program.level}
+                      </span>
+                    </div>
+                    {expandedProgramId === program.id ? (
+                      <ul className="text-gray-700 text-sm space-y-2 mb-6 list-disc list-inside text-title">
+                        {program.description.map((item, idx) => (
+                          <li key={idx}>{item}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-gray-700 mb-6 text-sm line-clamp-3">
+                        {program.description[0]}
+                      </p>
+                    )}
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="w-full border-aqua-500 text-aqua-600 card text-body"
+                      onClick={() => toggleDescription(program.id)}
+                    >
+                      <Link to="#">
+                        {expandedProgramId === program.id ? "បិទ" : "អានបន្ថែម"}
+                      </Link>
+                    </Button>
+                  </div>
+                </Card>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: Grid view */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredPrograms.map((program) => (
-            <div
-              key={program.id}
-              className="min-w-[280px] md:min-w-0 flex-shrink-0 md:flex-shrink hover-scale"
-            >
+            <div key={program.id} className="hover-scale">
               <Card className="overflow-hidden">
                 <div className="h-48 overflow-hidden">
                   <img
@@ -153,8 +215,6 @@ const ProgramsSection = () => {
                       {program.level}
                     </span>
                   </div>
-
-                  {/* Description */}
                   {expandedProgramId === program.id ? (
                     <ul className="text-gray-700 text-sm space-y-2 mb-6 list-disc list-inside text-title">
                       {program.description.map((item, idx) => (
@@ -163,10 +223,9 @@ const ProgramsSection = () => {
                     </ul>
                   ) : (
                     <p className="text-gray-700 mb-6 text-sm line-clamp-3">
-                      {program.description.slice(0, 0).join(", ")}
+                      {program.description[0]}
                     </p>
                   )}
-
                   <Button
                     asChild
                     variant="outline"

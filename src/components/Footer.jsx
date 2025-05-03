@@ -13,6 +13,7 @@ const Footer = () => {
               <img
                 src={logo}
                 alt="logo"
+                loading="lazy"
                 className="w-10 h-10 object-cover rounded-3xl border-2 border-sky-500"
               />
               <span className="text-xl font-bold">Rithya</span>

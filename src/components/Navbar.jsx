@@ -38,6 +38,7 @@ const Navbar = () => {
           <img
             src={logo}
             alt="Logo"
+            loading="lazy"
             className="w-12 h-12 object-cover rounded-3xl border-2 border-sky-500"
           />
 
