@@ -7,6 +7,7 @@ import facilities from "../assets/gallery4.jpg";
 import events from "../assets/gallery5.jpg";
 import kid1 from "../assets/Program3.JPG";
 
+// Gallery Data
 const galleryItems = [
   { id: 1, image: training, category: "កំពុងហ្វឹកហាត់", title: "Training" },
   { id: 2, image: competition, category: "ការប្រកួត", title: "Competition" },
@@ -14,6 +15,16 @@ const galleryItems = [
   { id: 4, image: facilities, category: "គ្រឿងបរិក្ខារ", title: "Facilities" },
   { id: 5, image: events, category: "កម្មវិធី", title: "Events" },
   { id: 6, image: kid1, category: "កុមារ", title: "Kids" },
+];
+
+// Filter Options
+const categories = [
+  "ទាំងអស់",
+  "កំពុងហ្វឹកហាត់",
+  "ការប្រកួត",
+  "កុមារ",
+  "គ្រឿងបរិក្ខារ",
+  "កម្មវិធី",
 ];
 
 const GallerySection = () => {
@@ -27,14 +38,17 @@ const GallerySection = () => {
   return (
     <section id="gallery" className="section-padding bg-gray-50">
       <div className="container mx-auto max-w-screen-lg px-4 py-10">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-head text-aqua-500">
+        {/* Header */}
+        <div className="text-center mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-head text-aqua-500 mb-4">
             កម្រងរូបភាព
           </h2>
-          <div className="w-24 h-1 bg-aqua-500 mx-auto mb-6"></div>
+          <div className="w-24 h-1 bg-aqua-500 mx-auto mb-4"></div>
         </div>
 
-        {/* Mobile: horizontal scroll | sm and up: grid */}
+       
+
+        {/* Gallery Grid */}
         <div className="flex gap-4 overflow-x-auto sm:grid sm:grid-cols-2 md:grid-cols-3 sm:gap-6 no-scrollbar">
           {filteredItems.map((item) => (
             <div

@@ -100,6 +100,7 @@ const ProgramsSection = () => {
           <div className="w-24 h-1 bg-aqua-500 mx-auto mb-6"></div>
         </div>
 
+
         {/* Desktop Filters */}
         <div className="hidden md:flex flex-wrap justify-center gap-4 mb-12">
           {filters.map((filter) => (
@@ -123,7 +124,7 @@ const ProgramsSection = () => {
             {filteredPrograms.map((program) => (
               <div
                 key={program.id}
-                className="min-w-[300px] flex-shrink-0 text-body"
+                className="min-w-[300px] flex-shrink-0 text-body snap-center"
               >
                 <Card className="overflow-hidden">
                   <div className="w-full h-[250px] overflow-hidden">
