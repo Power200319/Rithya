@@ -122,10 +122,11 @@ const ProgramsSection = () => {
             {filteredPrograms.map((program) => (
               <div
                 key={program.id}
-                className="min-w-[280px] flex-shrink-0 hover-scale mb-6"
+                className="min-w-[300px] flex-shrink-0 hover-scale mb-6​ text-body"
               >
                 <Card className="overflow-hidden">
-                  <div className="h-48 overflow-hidden">
+                  {/* Image with specific height and width */}
+                  <div className="w-full h-[250px] overflow-hidden">
                     <img
                       src={program.image}
                       alt={program.title}
@@ -180,7 +181,7 @@ const ProgramsSection = () => {
         </div>
 
         {/* Desktop View */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-body">
           {filteredPrograms.map((program) => (
             <div key={program.id} className="hover-scale">
               <Card className="overflow-hidden">

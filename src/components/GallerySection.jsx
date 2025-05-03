@@ -81,14 +81,14 @@ const GallerySection = () => {
           {filteredItems.map((item) => (
             <div
               key={item.id}
-              className="min-w-[250px] sm:min-w-0 flex-shrink-0 group relative overflow-hidden rounded-lg shadow-md cursor-pointer hover-scale"
+              className="min-w-[300px] sm:min-w-0 flex-shrink-0 group relative overflow-hidden rounded-lg shadow-md cursor-pointer hover-scale"
               onClick={() => setExpandedImage(item.id)}
             >
               <img
                 src={item.image}
                 alt={item.title}
                 loading="lazy"
-                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                className="w-full h-[250px] sm:h-[300px] object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-0 w-full p-4 text-white">
