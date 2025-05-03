@@ -122,7 +122,7 @@ const ProgramsSection = () => {
             {filteredPrograms.map((program) => (
               <div
                 key={program.id}
-                className="min-w-[280px] flex-shrink-0 hover-scale"
+                className="min-w-[280px] flex-shrink-0 hover-scale mb-6"
               >
                 <Card className="overflow-hidden">
                   <div className="h-48 overflow-hidden">
@@ -132,7 +132,7 @@ const ProgramsSection = () => {
                       className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                     />
                   </div>
-                  <div className="p-6">
+                  <div className="p-4">
                     <div className="flex justify-between items-start mb-3">
                       <h3 className="text-xl font-bold text-navy-800 text-body">
                         {program.title}
@@ -154,7 +154,7 @@ const ProgramsSection = () => {
                       </span>
                     </div>
                     {expandedProgramId === program.id ? (
-                      <ul className="text-gray-700 text-sm space-y-2 mb-6 list-disc list-inside text-title">
+                      <ul className="text-gray-700 text-sm space-y-2 mb-6 list-disc list-inside">
                         {program.description.map((item, idx) => (
                           <li key={idx}>{item}</li>
                         ))}
@@ -213,7 +213,7 @@ const ProgramsSection = () => {
                     </span>
                   </div>
                   {expandedProgramId === program.id ? (
-                    <ul className="text-gray-700 text-sm space-y-2 mb-6 list-disc list-inside text-title">
+                    <ul className="text-gray-700 text-sm space-y-2 mb-6 list-disc list-inside">
                       {program.description.map((item, idx) => (
                         <li key={idx}>{item}</li>
                       ))}
