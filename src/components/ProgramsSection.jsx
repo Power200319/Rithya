@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { Button } from "../components/ui/Button";
 import { Card } from "./ui/Card";
 import basic from "../assets/Program1.JPG";
-import advaned from "../assets/Program2.JPG";
-import intermediate from "../assets/Program3.JPG";
+import advaned from "../assets/Program3.JPG";
+import intermediate from "../assets/Program2.JPG";
 import highest from "../assets/Program4.JPG";
 
 const programs = [
