@@ -46,14 +46,12 @@ const GallerySection = () => {
           <div className="w-24 h-1 bg-aqua-500 mx-auto mb-4"></div>
         </div>
 
-       
-
         {/* Gallery Grid */}
-        <div className="flex gap-4 overflow-x-auto sm:grid sm:grid-cols-2 md:grid-cols-3 sm:gap-6 no-scrollbar">
+        <div className="flex gap-4 overflow-x-auto sm:grid sm:grid-cols-2 md:grid-cols-3 sm:gap-6 px-1 no-scrollbar snap-x snap-mandatory">
           {filteredItems.map((item) => (
             <div
               key={item.id}
-              className="min-w-[300px] sm:min-w-0 flex-shrink-0 group relative overflow-hidden rounded-lg shadow-md cursor-pointer"
+              className="min-w-[280px] sm:min-w-0 flex-shrink-0 group relative overflow-hidden rounded-lg shadow-md cursor-pointer snap-start"
             >
               <img
                 src={item.image}
