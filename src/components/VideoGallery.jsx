@@ -67,33 +67,18 @@ const VideoGallery = () => {
       : videoItems.filter((item) => item.category === filter);
 
   return (
-    <section className="py-12 bg-gray-50">
+    <section id="videos" className="py-12 bg-gray-50">
       <div className="container mx-auto px-4 py-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text text-head text-aqua-500">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 gradient-text text-head text-aqua-500">
             កម្រងវីដេអូ
           </h2>
           <div className="w-24 h-1 bg-aqua-500 mx-auto mb-6"></div>
         </div>
-       {/* Fillter */}
-        <div className="hidden md:flex flex-wrap justify-center gap-3 mb-10">
-          {categories.map((category) => (
-            <button
-              key={category}
-              className={`px-4 py-2 rounded-full capitalize transition-all text-body ${
-                filter === category
-                  ? "bg-aqua-500 text-white"
-                  : "bg-white text-gray-700 hover:bg-aqua-100"
-              }`}
-              onClick={() => setFilter(category)}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
 
+        {/* Video Modal */}
         {activeVideo && (
-          <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+          <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50​ ">
             <div className="bg-white rounded-xl overflow-hidden shadow-xl relative w-full max-w-md">
               <button
                 className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full hover:bg-red-600 z-10"
@@ -117,12 +102,13 @@ const VideoGallery = () => {
           </div>
         )}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Video Grid */}
+        <div className="flex overflow-x-auto gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-8 no-scrollbar">
           {filteredVideos.map((video) => (
             <div
               key={video.id}
               className={cn(
-                "group bg-white rounded-xl shadow-md overflow-hidden hover-scale transition-all duration-300",
+                "w-[90%] sm:min-w-0 flex-shrink-0 group bg-white rounded-xl shadow-md overflow-hidden hover-scale transition-all duration-300",
                 activeVideo?.id === video.id && "ring-2 ring-aqua-500"
               )}
             >
@@ -148,7 +134,6 @@ const VideoGallery = () => {
                 </div>
               </div>
               <div className="p-4">
-                {/* <h3 className="font-bold mb-1 line-clamp-1">{video.title}</h3> */}
                 <Button
                   variant="outline"
                   size="sm"

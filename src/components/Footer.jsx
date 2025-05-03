@@ -10,7 +10,11 @@ const Footer = () => {
           {/* Column 1: Logo and about */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <img src={logo} alt="logo" className="w-10 h-10 object-cover rounded-3xl border-2 border-sky-500" />
+              <img
+                src={logo}
+                alt="logo"
+                className="w-10 h-10 object-cover rounded-3xl border-2 border-sky-500"
+              />
               <span className="text-xl font-bold">Rithya</span>
             </div>
             <p className="text-gray-300 mb-4">
@@ -68,23 +72,18 @@ const Footer = () => {
               Our Programs
             </h3>
             <ul className="space-y-2">
-              {[
-                "Kids Swimming",
-                "Adult Lessons",
-                "Competitive Training",
-                "Private Classes",
-                "Aqua Fitness",
-                "Special Needs",
-              ].map((program) => (
-                <li key={program}>
-                  <Link
-                    to="/programs"
-                    className="text-gray-300 hover:text-aqua-400 transition-colors"
-                  >
-                    {program}
-                  </Link>
-                </li>
-              ))}
+              {["Basic", "Intermediate", "Advanced", "Highest"].map(
+                (program) => (
+                  <li key={program}>
+                    <Link
+                      to="/programs"
+                      className="text-gray-300 hover:text-aqua-400 transition-colors"
+                    >
+                      {program}
+                    </Link>
+                  </li>
+                )
+              )}
             </ul>
           </div>
 
@@ -100,16 +99,16 @@ const Footer = () => {
                   size={18}
                 />
                 <span className="text-gray-300">
-                  123 Swim Lane, Waterfront District, Ocean City, CA 90210
+                  Olympic Stadium / Khmer Swimming Federation
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="text-aqua-400 flex-shrink-0" size={18} />
-                <span className="text-gray-300">(555) 123-4567</span>
+                <span className="text-gray-300">012 347 400 / 088 888 9400</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="text-aqua-400 flex-shrink-0" size={18} />
-                <span className="text-gray-300">info@aquaelite.com</span>
+                <span className="text-gray-300">ksf.rithya@gmail.com</span>
               </li>
             </ul>
           </div>
@@ -117,7 +116,7 @@ const Footer = () => {
 
         <div className="border-t border-navy-600 mt-12 pt-8 text-center text-gray-400 text-sm">
           <p>
-            © {new Date().getFullYear()} AquaElite Swimming Club. All rights
+            © {new Date().getFullYear()} Rithya Swimming Club. All rights
             reserved.
           </p>
         </div>

@@ -10,7 +10,7 @@ const testimonials = [
     id: 1,
     name: "នាង​ សូរិទ្ធិយ៉ា ( Neang Sorithya )",
     role: "Parent of 2 swimmers",
-    image: teacher4,
+    image: teacher1,
     quote:
       "AquaElite transformed my children's swimming abilities. The instructors are patient, knowledgeable, and genuinely care about each child's progress. My kids look forward to their lessons every week!",
     rating: 5,
@@ -37,7 +37,7 @@ const testimonials = [
     id: 4,
     name: "ចេង​ សុផា​ ( Cheng Pha )",
     role: "Parent",
-    image: teacher1,
+    image: teacher4,
     rating: 5,
   },
 ];
@@ -79,11 +79,11 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Bottom 3 Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="flex md:grid overflow-x-auto gap-6 md:grid-cols-3 pb-4 -mx-4 px-4 no-scrollbar">
           {bottomTestimonials.map((testimonial, index) => (
             <Card
               key={testimonial.id}
-              className={`p-6 bg-gray-50 hover-scale transition-all duration-300 ${
+              className={`min-w-[250px] md:min-w-0 flex-shrink-0 p-6 bg-gray-50 hover-scale transition-all duration-300 ${
                 activeIndex === index + 1
                   ? "border-aqua-500 shadow-lg bg-white"
                   : ""

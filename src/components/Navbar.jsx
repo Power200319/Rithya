@@ -63,23 +63,24 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <nav className="nav-desktop items-center space-x-8 text-body">
           {[
-            "ទំព័រដើម",
-            "អំពីយើង",
-            "កម្មវិធីសិក្សា",
-            "កាលវិភាគ",
-            "រូបភាព",
-            "វីដេអូ",
-            "ទំនាក់ទំនង",
+            { label: "ទំព័រដើម", href: "#home" },
+            { label: "អំពីយើង", href: "#about" },
+            { label: "កម្មវិធីសិក្សា", href: "#programs" },
+            { label: "កាលវិភាគ", href: "#schedule" },
+            { label: "រូបភាព", href: "#gallery" },
+            { label: "វីដេអូ", href: "#videos" },
+            { label: "ទំនាក់ទំនង", href: "#contact" },
           ].map((item) => (
-            <Link
-              key={item}
-              to={item === "ទំព័រដើម" ? "/" : `/${item.toLowerCase()}`}
+            <a
+              key={item.label}
+              href={item.href}
+              onClick={() => setIsMobileMenuOpen(false)}
               className={`font-medium hover transition-colors ${
                 isScrolled ? "text-navy-700" : "text-white"
               }`}
             >
-              {item}
-            </Link>
+              {item.label}
+            </a>
           ))}
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSeh_IBmsqMSXlCWiLvPopAI7wB_B9KHF3Sh6zVgzU9pwo8-pQ/viewform?usp=sharing">
             <Button className="bg-aqua-500 hover text-white">

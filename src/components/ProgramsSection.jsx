@@ -2,10 +2,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../components/ui/Button";
 import { Card } from "./ui/Card";
-import basic from "../assets/basic.jpg";
-import advaned from "../assets/advaned.png";
-import intermediate from "../assets/intermedia.png";
-import highest from "../assets/hight.png";
+import basic from "../assets/Program1.JPG";
+import advaned from "../assets/Program2.JPG";
+import intermediate from "../assets/Program3.JPG";
+import highest from "../assets/Program4.JPG";
 
 const programs = [
   {
@@ -68,6 +68,7 @@ const programs = [
 
 const ProgramsSection = () => {
   const [activeFilter, setActiveFilter] = useState("all");
+  const [expandedProgramId, setExpandedProgramId] = useState(null);
 
   const filters = [
     { id: "all", label: "ទាំងអស់" },
@@ -85,6 +86,10 @@ const ProgramsSection = () => {
             program.level.toLowerCase() === activeFilter.toLowerCase()
         );
 
+  const toggleDescription = (id) => {
+    setExpandedProgramId(expandedProgramId === id ? null : id);
+  };
+
   return (
     <section id="programs" className="section-padding bg-gray-50">
       <div className="container mx-auto px-4 py-10">
@@ -93,12 +98,6 @@ const ProgramsSection = () => {
             កម្មវិធីបណ្តុះបណ្តាលហែលទឹក
           </h2>
           <div className="w-24 h-1 bg-aqua-500 mx-auto mb-6"></div>
-          {/* <p className="text-gray-700 max-w-3xl mx-auto">
-            Discover our range of swimming programs designed for all ages and
-            skill levels. From beginners taking their first strokes to advanced
-            swimmers refining their technique, we have the perfect program for
-            everyone.
-          </p> */}
         </div>
 
         {/* Filters */}
@@ -109,7 +108,7 @@ const ProgramsSection = () => {
               className={`px-6 py-2 rounded-full transition-all ${
                 activeFilter === filter.id
                   ? "bg-aqua-500 text-white"
-                  : "bg-white text-gray-700​ text-body hover:bg-aqua-100​ "
+                  : "bg-white text-gray-700 hover:bg-aqua-100"
               }`}
               onClick={() => setActiveFilter(filter.id)}
             >
@@ -118,72 +117,70 @@ const ProgramsSection = () => {
           ))}
         </div>
 
-        {/* Programs Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Responsive Scrollable Cards */}
+        <div className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 overflow-x-auto md:overflow-visible scroll-smooth pb-4 no-scrollbar">
           {filteredPrograms.map((program) => (
-            <Card
+            <div
               key={program.id}
-              className="overflow-hidden hover-scale card-shadow border-none"
+              className="min-w-[280px] md:min-w-0 flex-shrink-0 md:flex-shrink hover-scale"
             >
-              <div className="h-48 overflow-hidden">
-                <img
-                  src={program.image}
-                  alt={program.title}
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                />
-              </div>
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-xl font-bold text-navy-800 text-body">
-                    {program.title}
-                  </h3>
-                  <span
-                    className={`text-xs font-semibold px-3 py-1 rounded-full ${
-                      program.level === "Basic"
-                        ? "bg-green-100 text-green-800"
-                        : program.level === "Intermediate"
-                        ? "bg-yellow-100 text-yellow-800"
-                        : program.level === "Advanced"
-                        ? "bg-blue-100 text-blue-800"
-                        : program.level === "Highest"
-                        ? "bg-red-100 text-red-800"
-                        : "bg-gray-100 text-gray-800"
-                    }`}
-                  >
-                    {program.level}
-                  </span>
+              <Card className="overflow-hidden">
+                <div className="h-48 overflow-hidden">
+                  <img
+                    src={program.image}
+                    alt={program.title}
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                  />
                 </div>
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-xl font-bold text-navy-800 text-body">
+                      {program.title}
+                    </h3>
+                    <span
+                      className={`text-xs font-semibold px-3 py-1 rounded-full ${
+                        program.level === "Basic"
+                          ? "bg-green-100 text-green-800"
+                          : program.level === "Intermediate"
+                          ? "bg-yellow-100 text-yellow-800"
+                          : program.level === "Advanced"
+                          ? "bg-blue-100 text-blue-800"
+                          : program.level === "Highest"
+                          ? "bg-red-100 text-red-800"
+                          : "bg-gray-100 text-gray-800"
+                      }`}
+                    >
+                      {program.level}
+                    </span>
+                  </div>
 
-                {/* Description: List or Paragraph */}
-                {Array.isArray(program.description) ? (
-                  <ul className="text-gray-700 text-sm space-y-2 mb-6 list-disc list-inside text-title">
-                    {program.description.map((item, idx) => (
-                      <li key={idx}>{item}</li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="text-gray-700 mb-6 text-sm line-clamp-3">
-                    {program.description}
-                  </p>
-                )}
+                  {/* Description */}
+                  {expandedProgramId === program.id ? (
+                    <ul className="text-gray-700 text-sm space-y-2 mb-6 list-disc list-inside text-title">
+                      {program.description.map((item, idx) => (
+                        <li key={idx}>{item}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-gray-700 mb-6 text-sm line-clamp-3">
+                      {program.description.slice(0, 0).join(", ")}
+                    </p>
+                  )}
 
-                <Button
-                  asChild
-                  variant="outline"
-                  className="w-full border-aqua-500 text-aqua-600 card text-body"
-                >
-                  <Link to={`/programs/${program.id}`}>មើលបន្ថែម</Link>
-                </Button>
-              </div>
-            </Card>
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="w-full border-aqua-500 text-aqua-600 card text-body"
+                    onClick={() => toggleDescription(program.id)}
+                  >
+                    <Link to="#">
+                      {expandedProgramId === program.id ? "បិទ" : "អានបន្ថែម"}
+                    </Link>
+                  </Button>
+                </div>
+              </Card>
+            </div>
           ))}
-        </div>
-
-        {/* View All Button */}
-        <div className="text-center mt-12 text-white">
-          <Button asChild className="bg-navy-700 hover px-8​ text-body">
-            <Link to="/programs">មើលទាំងអស់</Link>
-          </Button>
         </div>
       </div>
     </section>

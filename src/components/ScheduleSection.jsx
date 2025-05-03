@@ -1,202 +1,181 @@
 import { useState } from "react";
-import { Button } from "../components/ui/Button";
-import { Clock } from "lucide-react";
+import { X } from "lucide-react";
 
-const weekDays = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
-
-const timeSlots = [
+const trainingOptions = [
   {
-    time: "07:00 - 08:00",
-    classes: {
-      Monday: { name: "", level: "" },
-      Tuesday: { name: "", level: "" },
-      Wednesday: { name: "", level: "" },
-      Thursday: { name: "", level: "" },
-      Friday: { name: "", level: "" },
-      Saturday: { name: "", level: "" },
-      Sunday: {},
-    },
+    hours: ["តម្លៃហ្វឹកហាត់ ១ម៉ោង", <br />, "Training fee per on hour"],
+    type: [
+      "ថ្នាក់បង្រៀន គ្រូ១នាក់ សិស្ស ១នាក់",
+      <br />,
+      "Private lesson, 1 instructor - 1 swimmer",
+    ],
+    price: "$15",
+    color: "bg-red-500",
   },
   {
-    time: "08:00 - 09:00",
-    classes: {
-      Monday: { name: "", level: "" },
-      Tuesday: { name: "", level: "" },
-      Wednesday: { name: "", level: "" },
-      Thursday: { name: "", level: "" },
-      Friday: { name: "", level: "" },
-      Saturday: { name: "", level: "" },
-      Sunday: { name: "", level: "" },
-    },
+    hours: ["តម្លៃហ្វឹកហាត់ ៨ម៉ោង", <br />, "Training fee per 8 hour"],
+    type: [
+      "ថ្នាក់បង្រៀន គ្រូ១នាក់ សិស្ស ១នាក់",
+      <br />,
+      "Private lesson, 1 instructor - 1 swimmer",
+    ],
+    price: "$120",
+    color: "bg-red-500",
   },
   {
-    time: "15:00 - 16:00",
-    classes: {
-      Monday: {},
-      Tuesday: {},
-      Wednesday: {},
-      Thursday: {},
-      Friday: {},
-      Saturday: { name: "", level: "" },
-      Sunday: { name: "", level: "" },
-    },
+    hours: ["តម្លៃហ្វឹកហាត់ ៨ម៉ោង", <br />, "Training fee per ៨ hour"],
+    type: [
+      "ថ្នាក់បង្រៀន គ្រូ១នាក់ សិស្ស ២នាក់",
+      <br />,
+      "Private lesson, 1 instructor - 2 swimmer",
+    ],
+    price: "$230",
+    color: "bg-yellow-500",
   },
   {
-    time: "16:00 - 17:00",
-    classes: {
-      Monday: { name: "", level: "" },
-      Tuesday: { name: "", level: "" },
-      Wednesday: { name: "", level: "" },
-      Thursday: { name: "", level: "" },
-      Friday: { name: "", level: "" },
-      Saturday: { name: "", level: "" },
-      Sunday: {},
-    },
+    hours: ["តម្លៃហ្វឹកហាត់ ៨ម៉ោង", <br />, "Training fee per ៨ hour"],
+    type: [
+      "ថ្នាក់បង្រៀន គ្រូ១នាក់ សិស្ស ៣នាក់",
+      <br />,
+      "Private lesson, 1 instructor - 3 swimmer",
+    ],
+    price: "$330",
+    color: "bg-yellow-500",
   },
   {
-    time: "18:00 - 19:00",
-    classes: {
-      Monday: { name: "", level: "" },
-      Tuesday: { name: "", level: "" },
-      Wednesday: { name: "", level: "" },
-      Thursday: { name: "", level: "" },
-      Friday: { name: "", level: "" },
-      Saturday: {},
-      Sunday: {},
-    },
+    hours: ["តម្លៃហ្វឹកហាត់ ៨ម៉ោង", <br />, "Training fee per ៨ hour"],
+    type: [
+      "ថ្នាក់បង្រៀន គ្រូ១នាក់ សិស្ស ៤នាក់",
+      <br />,
+      "Private lesson, 1 instructor - 4 swimmer",
+    ],
+    price: "$420",
+    color: "bg-yellow-500",
+  },
+  {
+    hours: ["តម្លៃហ្វឹកហាត់ ១០ម៉ោង", <br />, "Training fee per on hour"],
+    type: [
+      "ថ្នាក់បង្រៀន គ្រូ១នាក់ សិស្ស ១នាក់",
+      <br />,
+      "Private lesson, 1 instructor - 1 swimmer",
+    ],
+    price: "$140",
+    color: "bg-blue-600",
+  },
+  {
+    hours: ["តម្លៃហ្វឹកហាត់ ១៦ម៉ោង", <br />, "Training fee per on hour"],
+    type: [
+      "ថ្នាក់បង្រៀន គ្រូ១នាក់ សិស្ស ១នាក់",
+      <br />,
+      "Private lesson, 1 instructor - 1 swimmer",
+    ],
+    price: "$230",
+    color: "bg-blue-600",
+  },
+  {
+    hours: ["តម្លៃហ្វឹកហាត់ ២០ម៉ោង", <br />, "Foreigner fee per 20 hour"],
+    type: [
+      "ថ្នាក់បង្រៀន គ្រូ១នាក់ សិស្ស ១នាក់",
+      <br />,
+      "Private lesson, 1 instructor - 1 swimmer",
+    ],
+    price: "$280",
+    color: "bg-blue-600",
+  },
+  {
+    hours: ["បរទេស ១ម៉ោង", <br />, "Foreigner fee per 1 hours"],
+    type: [
+      "ថ្នាក់បង្រៀន គ្រូ១នាក់ សិស្ស ១នាក់",
+      <br />,
+      "Private lesson, 1 instructor - 1 swimmer",
+    ],
+    price: "$20",
+    color: "bg-green-600",
+  },
+  {
+    hours: ["បរទេស ៨ម៉ោង", <br />, "Foreigner fee per 8 hours"],
+    type: [
+      "ថ្នាក់បង្រៀន គ្រូ១នាក់ សិស្ស ១នាក់",
+      <br />,
+      "Private lesson, 1 instructor - 1 swimmer",
+    ],
+    price: "$150",
+    color: "bg-green-600",
   },
 ];
 
 const ScheduleSection = () => {
-  const [visibleDays, setVisibleDays] = useState(weekDays.slice(0, 5)); // Default to weekdays
+  const [showSchedule, setShowSchedule] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(null);
 
   return (
     <section id="schedule" className="section-padding bg-white">
-      <div className="container mx-auto px-4 py-10">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 gradient-text​ text-head text-aqua-500">
-            ថ្នាក់បង្រៀនហែលទឹកកម្រិតមូលដ្ឋាន ដល់កម្រិតខ្ពស់
-          </h2>
-          <p className="text-gray-700 text-xl max-w-3xl mx-auto text-body text-aqua-400">
-            កាលវិភាគ សម្រាប់ការហ្វឹកហាត់​ ថ្ងៃចន្ទដល់សុក្រ និង​
-            ថ្ងៃសៅរ៍ដល់​អាទិត្យ
-          </p>
-          <div className="w-24 h-1 bg-aqua-500 mx-auto mb-6 mt-4"></div>
-        </div>
+      <div className="container mx-auto px-4 py-10 text-center">
+        <h2 className="text-2xl md:text-3xl font-bold text-aqua-500 mb-4 text-head">
+          ថ្នាក់បង្រៀនហែលទឹកកម្រិតមូលដ្ឋាន ដល់កម្រិតខ្ពស់
+        </h2>
+        <p className="text-gray-700 text-xl text-aqua-500​ text-body text-aqua-500 mt-6">
+          តារាងតម្លៃថ្នាក់បង្រៀនហែលទឹក សហព័ន្ធជខ្មែរកីឡាហែលទឹក
+        </p>
+        <div className="w-24 h-1 bg-aqua-500 mx-auto my-4"></div>
 
-        {/* Filter buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-10">
-          <Button
-            variant={visibleDays.length === 5 ? "default" : "outline"}
-            className={visibleDays.length === 5 ? "bg-aqua-500" : ""}
-            onClick={() => setVisibleDays(weekDays.slice(0, 5))}
-          >
-            Weekdays
-          </Button>
-          <Button
-            variant={visibleDays.length === 2 ? "default" : "outline"}
-            className={visibleDays.length === 2 ? "bg-aqua-500" : ""}
-            onClick={() => setVisibleDays(weekDays.slice(5, 7))}
-          >
-            Weekend
-          </Button>
-          <Button
-            variant={visibleDays.length === 7 ? "default" : "outline"}
-            className={visibleDays.length === 7 ? "bg-aqua-500" : ""}
-            onClick={() => setVisibleDays(weekDays)}
-          >
-            Full Week
-          </Button>
-        </div>
+        <button
+          onClick={() => setShowSchedule(!showSchedule)}
+          className="bg-aqua-500 text-white px-6 py-2 rounded-lg shadow hover:bg-aqua-600 transition text-body"
+        >
+          មើលពត៌មានលម្អិត
+        </button>
 
-        {/* Schedule table */}
-        <div className="overflow-x-auto bg-white rounded-lg shadow">
-          <table className="min-w-full">
-            <thead>
-              <tr className="bg-navy-700 text-white">
-                <th className="py-3 px-4 text-left">Time</th>
-                {weekDays
-                  .filter((day) => visibleDays.includes(day))
-                  .map((day) => (
-                    <th key={day} className="py-3 px-4 text-left">
-                      {day}
-                    </th>
-                  ))}
-              </tr>
-            </thead>
-            <tbody>
-              {timeSlots.map((slot, index) => (
-                <tr
-                  key={slot.time}
-                  className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}
+        {showSchedule && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-10">
+            {trainingOptions.map((option, index) => (
+              <div
+                className="flex justify-between items-center mb-2 bg-black text-body2 rounded-2xl  text-white shadow-lg cursor-pointer transform hover:scale-105 transition"
+                onClick={() => setSelectedCard(option)}
+              >
+                <div
+                  key={index}
+                  className={`rounded-2xl p-2 text-white shadow-lg  ${option.color}`}
                 >
-                  <td className="py-3 px-4 border-t flex items-center">
-                    <Clock size={16} className="text-aqua-500 mr-2" />
-                    <span>{slot.time}</span>
-                  </td>
-                  {weekDays
-                    .filter((day) => visibleDays.includes(day))
-                    .map((day) => {
-                      const classInfo = slot.classes[day];
-                      return (
-                        <td key={day} className="py-3 px-4 border-t">
-                          {classInfo ? (
-                            <div>
-                              <div className="font-medium text-navy-700">
-                                {classInfo.name}
-                              </div>
-                              <div
-                                className={`text-xs mt-1 inline-block px-2 py-1 rounded-full ${
-                                  classInfo.level === "Beginner"
-                                    ? "bg-green-100 text-green-800"
-                                    : classInfo.level === "Intermediate"
-                                    ? "bg-yellow-100 text-yellow-800"
-                                    : classInfo.level === "Advanced"
-                                    ? "bg-red-100 text-red-800"
-                                    : "bg-blue-100 text-blue-800"
-                                }`}
-                              >
-                                {classInfo.level}
-                              </div>
-                            </div>
-                          ) : (
-                            <span className=" text-gray-500">No class</span>
-                          )}
-                        </td>
-                      );
-                    })}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-4 mt-5 text-body text-center">
-          <h3 className="bg-aqua-500 text-white p-1.5 rounded-lg">
-            ថ្នាក់គ្រូ១នាក់ សិស្ស១នាក់ ១២០$
-          </h3>
-          <h3 className="bg-aqua-500 text-white p-1.5 rounded-lg">
-            ថ្នាក់គ្រូ១នាក់ សិស្ស២នាក់ ២៣០$
-          </h3>
-          <h3 className="bg-aqua-500 text-white p-1.5 rounded-lg">
-            ថ្នាក់គ្រូ១នាក់ សិស្ស៣នាក់ ៣៣០$
-          </h3>
-          <h3 className="bg-aqua-500 text-white p-1.5 rounded-lg">
-            ថ្នាក់គ្រូ១នាក់ សិស្ស៤នាក់ ៤២០$
-          </h3>
-        </div>
-        <div className="mt-8 text-center text-white">
-          <Button asChild className="bg-navy-700 hover text-body">
-            <a href="/schedule">មើលទាំងអស់</a>
-          </Button>
-        </div>
+                  <h3 className="">{option.hours}</h3>
+                </div>
+                <p className="text-white">{option.type}</p>
+                <div
+                  key={index}
+                  className={`rounded-2xl p-4 text-white shadow-lg  ${option.color}`}
+                  onClick={() => setSelectedCard(option)}
+                >
+                  <span className="">{option.price}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Modal View */}
+        {selectedCard && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+            <div className="bg-white p-6 rounded-2xl shadow-lg w-11/12 max-w-md relative text-body">
+              <button
+                onClick={() => setSelectedCard(null)}
+                className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+              >
+                <X className="w-6 h-6" />
+              </button>
+              <div
+                className={`rounded-xl p-6 text-white ${selectedCard.color}`}
+              >
+                <h3 className="text-2xl font-bold mb-2">
+                  {selectedCard.hours}
+                </h3>
+                <p className="text-lg mb-4">{selectedCard.type}</p>
+                <div className="text-right text-xl font-bold">
+                  {selectedCard.price}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
