@@ -55,7 +55,7 @@ const VideoGallery = () => {
           <div className="fixed inset-0 bg-white bg-opacity-70 flex items-center justify-center z-50​ ">
             <div className="bg-white rounded-xl overflow-hidden shadow-xl relative w-full max-w-md">
               <button
-                className="absolute top-2 right-2 text-white p-2 rounded-full hover:bg-red-600 z-10"
+                className="absolute top-2 right-2 text-white p-2 rounded-full  z-10"
                 onClick={() => setActiveVideo(null)}
               >
                 ✕
