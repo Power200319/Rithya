@@ -131,7 +131,7 @@ const ProgramsSection = () => {
                     <img
                       src={program.image}
                       alt={program.title}
-                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                      className=" h-full  transition-transform duration-700 hover:scale-110"
                     />
                   </div>
                   <div className="p-4">
