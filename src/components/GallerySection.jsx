@@ -47,7 +47,7 @@ const GallerySection = () => {
         </div>
 
         {/* Gallery Grid */}
-        <div className="flex  md:grid overflow-x-auto gap-4 md:grid-cols-3 px-1  no-scrollbar">
+        <div className="flex md:grid overflow-x-auto gap-6 md:grid-cols-3 pb-4 -mx-4 px-4 no-scrollbar">
           {filteredItems.map((item) => (
             <div
               key={item.id}
@@ -57,7 +57,7 @@ const GallerySection = () => {
                 src={item.image}
                 alt={item.title}
                 loading="lazy"
-                className=" h-64  bg-white shadow-md rounded-xl transition-transform duration-500 group-hover:scale-110"
+                className=" h-64 lg:w-full bg-white shadow-md rounded-xl transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-0 w-full p-4 text-white flex items-center">

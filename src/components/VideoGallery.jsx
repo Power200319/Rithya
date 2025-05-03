@@ -52,15 +52,15 @@ const VideoGallery = () => {
 
         {/* Video Modal */}
         {activeVideo && (
-          <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50​ ">
+          <div className="fixed inset-0 bg-white bg-opacity-70 flex items-center justify-center z-50​ ">
             <div className="bg-white rounded-xl overflow-hidden shadow-xl relative w-full max-w-md">
               <button
-                className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full hover:bg-red-600 z-10"
+                className="absolute top-2 right-2 text-white p-2 rounded-full hover:bg-red-600 z-10"
                 onClick={() => setActiveVideo(null)}
               >
                 ✕
               </button>
-              <video controls autoPlay className="w-full h-auto">
+              <video controls autoPlay className="w-full h-auto z-1000">
                 <source src={activeVideo.videoUrl} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
@@ -77,24 +77,24 @@ const VideoGallery = () => {
         )}
 
         {/* Video Grid */}
-        <div className="flex overflow-x-auto gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-8 no-scrollbar">
+        <div className="flex overflow-x-auto gap-4 md:gap-1  sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 no-scrollbar">
           {filteredVideos.map((video) => (
             <div
               key={video.id}
               className={cn(
-                "w-[90%] sm:min-w-0 flex-shrink-0 group bg-white rounded-xl shadow-md overflow-hidden hover-scale transition-all duration-300",
+                "w-[90%] sm:min-w-0 flex-shrink-0 group bg-white rounded-xl shadow-md overflow-hidden hover-scale transition-all duration-300 ",
                 activeVideo?.id === video.id && "ring-2 ring-aqua-500"
               )}
             >
-              <div className="relative aspect-video overflow-hidden">
+              <div className="relative aspect-video overflow-hidden ">
                 <video
                   src={video.videoUrl}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover "
                   muted
                   playsInline
                   preload="metadata"
                 />
-                <div className="absolute inset-0 bg-navy-800 bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-navy-800 bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ">
                   <button
                     onClick={() => setActiveVideo(video)}
                     className="p-4 bg-aqua-500 rounded-full text-white hover:bg-aqua-600 transition-colors"
