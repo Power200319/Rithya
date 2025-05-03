@@ -100,7 +100,6 @@ const ProgramsSection = () => {
           <div className="w-24 h-1 bg-aqua-500 mx-auto mb-6"></div>
         </div>
 
-        {/* Filters */}
         <div className="hidden md:flex flex-wrap justify-center gap-4 mb-12">
           {filters.map((filter) => (
             <button
@@ -117,9 +116,9 @@ const ProgramsSection = () => {
           ))}
         </div>
 
-        {/* Mobile: Horizontal scroll */}
-        <div className="block md:hidden overflow-x-auto scroll-smooth no-scrollbar pb-4">
-          <div className="flex gap-6 min-w-max">
+        {/* Mobile View */}
+        <div className="block md:hidden w-full overflow-x-auto scroll-smooth pb-4 px-2 no-scrollbar">
+          <div className="flex gap-4 min-w-max">
             {filteredPrograms.map((program) => (
               <div
                 key={program.id}
@@ -161,9 +160,7 @@ const ProgramsSection = () => {
                         ))}
                       </ul>
                     ) : (
-                      <p className="text-gray-700 mb-6 text-sm line-clamp-3">
-                        {program.description[0]}
-                      </p>
+                      <div className="mb-6 h-5"></div>
                     )}
                     <Button
                       asChild
@@ -182,7 +179,7 @@ const ProgramsSection = () => {
           </div>
         </div>
 
-        {/* Desktop: Grid view */}
+        {/* Desktop View */}
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredPrograms.map((program) => (
             <div key={program.id} className="hover-scale">
@@ -222,9 +219,7 @@ const ProgramsSection = () => {
                       ))}
                     </ul>
                   ) : (
-                    <p className="text-gray-700 mb-6 text-sm line-clamp-3">
-                      {program.description[0]}
-                    </p>
+                    <div className="mb-6 h-5"></div>
                   )}
                   <Button
                     asChild
