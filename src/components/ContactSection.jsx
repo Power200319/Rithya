@@ -148,11 +148,11 @@ const ContactSection = () => {
         <div className="mt-16">
           <div className="bg-gray-200 rounded-lg h-96 overflow-hidden">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d3522.05091175234!2d104.90718426959496!3d11.556492800855123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e2!4m3!3m2!1d11.561306!2d104.92609499999999!4m3!3m2!1d11.558159!2d104.913688!5e0!3m2!1skm!2skh!4v1746209249319!5m2!1skm!2skh"
+              src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d7817.820319202874!2d104.913674!3d11.558298!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTHCsDMzJzI5LjkiTiAxMDTCsDU0JzQ5LjIiRQ!5e0!3m2!1sen!2skh!4v1746276250104!5m2!1sen!2skh"
               className="w-full h-full border-0"
+              allowfullscreen
               loading="lazy"
               title="Map location of Rithya Swimming Club"
-              allowFullScreen
             ></iframe>
           </div>
         </div>

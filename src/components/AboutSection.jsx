@@ -56,7 +56,6 @@ const AboutSection = () => {
             loop
             muted
             playsInline
-            preload="none"
             className="w-full h-64 object-cover"
           >
             <source src={v1} type="video/mp4" />

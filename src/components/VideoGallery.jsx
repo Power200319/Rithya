@@ -60,7 +60,7 @@ const VideoGallery = () => {
               >
                 ✕
               </button>
-              <video controls autoPlay preload="none" className="w-full h-auto">
+              <video controls autoPlay className="w-full h-auto">
                 <source src={activeVideo.videoUrl} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
