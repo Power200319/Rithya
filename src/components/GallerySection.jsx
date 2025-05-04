@@ -13,8 +13,6 @@ const galleryItems = [
   { id: 2, image: competition, category: "ការប្រកួត", title: "Competition" },
   { id: 3, image: kids, category: "កុមារ", title: "Kids" },
   { id: 4, image: facilities, category: "គ្រឿងបរិក្ខារ", title: "Facilities" },
-  { id: 5, image: events, category: "កម្មវិធី", title: "Events" },
-  { id: 6, image: kid1, category: "កុមារ", title: "Kids" },
 ];
 
 const GallerySection = () => {

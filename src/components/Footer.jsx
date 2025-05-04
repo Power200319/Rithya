@@ -18,10 +18,10 @@ const Footer = () => {
               />
               <span className="text-xl font-bold"></span>
             </div>
-            <p className="text-gray-300 mb-4 text-body grid grid-cols-1 gap-4">
-              <h3>ទំនុកចិត្ត ( Trust )</h3>
-              <h3>គុណភាព ( value )</h3>
-              <h3>និងរីកចម្រើន ( development )</h3>
+            <p className="text-gray-300 mb-4 text-body1 grid grid-cols-1 gap-4">
+              <h3>ទំនុកចិត្ត Trust </h3>
+              <h3>គុណភាព Value </h3>
+              <h3>និងរីកចម្រើន Development</h3>
             </p>
             <div className="flex space-x-4">
               {["facebook", "twitter", "instagram"].map((social) => (
