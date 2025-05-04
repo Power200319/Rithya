@@ -16,12 +16,12 @@ const Footer = () => {
                 loading="lazy"
                 className="w-10 h-10 object-cover rounded-3xl border-2 border-sky-500"
               />
-              <span className="text-xl font-bold">Rithya</span>
+              <span className="text-xl font-bold"></span>
             </div>
-            <p className="text-gray-300 mb-4">
-              Providing exceptional swimming instruction for all ages and skill
-              levels since 2005. Join our community and discover the joy of
-              swimming.
+            <p className="text-gray-300 mb-4 text-body grid grid-cols-1 gap-4">
+              <h3>ទំនុកចិត្ត ( Trust )</h3>
+              <h3>គុណភាព ( value )</h3>
+              <h3>និងរីកចម្រើន ( development )</h3>
             </p>
             <div className="flex space-x-4">
               {["facebook", "twitter", "instagram"].map((social) => (
@@ -117,7 +117,7 @@ const Footer = () => {
 
         <div className="border-t border-navy-600 mt-12 pt-8 text-center text-gray-400 text-sm">
           <p>
-            © {new Date().getFullYear()} Rithya Swimming Club. All rights
+            © {new Date().getFullYear()} Rithya Swimming School. All rights
             reserved.
           </p>
         </div>

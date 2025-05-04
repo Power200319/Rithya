@@ -1,5 +1,5 @@
 import { useState } from "react";
-import v1 from "../../public/video/technical1.mp4";
+import v1 from "../assets/about1.jpg";
 import p1 from "../assets/about.png";
 
 const AboutSection = () => {
@@ -29,11 +29,12 @@ const AboutSection = () => {
             អំពីយើង
           </h3>
           <p
-            className={`text-gray-800 text-body leading-relaxed max-w-md text-justify ${
-              expanded ? "" : "line-clamp-2"
+            className={`text-gray-800 text-body leading-relaxed max-w-md  ${
+              expanded ? "" : "line-clamp-1"
             }`}
+            style={{ textAlign: 'justify',  padding: '0 10px' }}
           >
-            ស្វែងយល់ពីអ្វីគ្រប់យ៉ាងដែលអ្នកត្រូវដឹងអំពីកីឡាហែល ទឹករបស់កម្ពុជា
+            &nbsp;&nbsp;&nbsp;ស្វែងយល់ពីអ្វីគ្រប់យ៉ាងដែលអ្នកត្រូវដឹងអំពីកីឡាហែល ទឹករបស់កម្ពុជា
             ពីគ្រូដែលមានបទពិសោធន៏ អតីតកីឡាករ កីឡាការិនីជម្រើសជាតិ
             ធ្នាប់ចូលរួមប្រកួតហែលទឹក ទាំង ថ្នាក់ជាតិ និងអន្តរជាតិ
             និងជាពិសេសដែលទទួលស្គាល់ពី សហព័ន្ធខ្មែរកីឡាហែលទឹក ដែលបានចូលរួមបណ្តុះ
@@ -43,7 +44,8 @@ const AboutSection = () => {
           </p>
           <button
             onClick={toggleReadMore}
-            className="mt-2 text-sm text-blue-600 hover:underline​ text-body"
+            className="mt-2 text-sm text-blue-600 hover:underline z-10 relative text-body"
+            style={{ pointerEvents: "auto" }}
           >
             {expanded ? "បិទ" : "អានបន្ថែម"}
           </button>
@@ -51,28 +53,30 @@ const AboutSection = () => {
 
         {/* RIGHT: Video and Description */}
         <div className="bg-white shadow-md rounded-xl overflow-hidden">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
+          <img
+            src={v1}
+            alt="Instructor"
+            loading="lazy"
             className="w-full h-64 object-cover"
-          >
-            <source src={v1} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          />
 
           <div className="p-6">
             <h3 className="text-lg font-semibold text-navy-800 mb-2 text-head">
               ហេតុអ្វីជ្រើសរើសហែលទឹក?
             </h3>
             {listExpanded && (
-              <ul className="list-disc list-inside text-gray-700 text-sm space-y-2 text-justify text-body">
-                <li>ការហែលទឹកជួយអភិវឌ្ឍសុខភាពខាងកាយនិងចិត្ត</li>
-                <li>ជាជំនាញសម្រាប់ការជួយខ្លួនបើមានអាសន្ន</li>
-                <li>ជាកីឡាដែលអាចហាត់បានគ្រប់អាយុ</li>
-                <li>ជួយអភិវឌ្ឍការលេងរួមជាមួយអ្នកដទៃ</li>
-              </ul>
+              <p
+                className="list-disc list-inside text-gray-700 text-sm space-y-2 text-start text-body "
+                style={{ wordSpacing: "2px" }}
+              >
+                ការហែលទឹក គឺកីឡាមួយដែលមានភាពសប្បាយរីករាយជាច្រើន
+                សម្រាប់មនុស្សគ្រប់ៗវ័យ និងកុមារ និងទទួលបាន
+                ភាពរីករាយជាមួយខ្លួនឯងនៅក្នុងទឹកប្រកបដោយភាពជឿជាក់។
+                <br />
+                មូលហេតុសំខាន់បំផុតមួួយទៀតគឺថា
+                ការហែលទឹកជាកីឡាតែមួយគត់ដែលអាចជួយអាយុជីវិតកូនរបស់អ្នកបាន
+                ពីការលង់ទឹក។
+              </p>
             )}
 
             <button

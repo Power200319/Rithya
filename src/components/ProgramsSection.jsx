@@ -142,14 +142,14 @@ const ProgramsSection = () => {
                       <span
                         className={`text-xs font-semibold px-3 py-1 rounded-full ${
                           program.level === "Basic"
-                            ? "bg-green-100 text-green-800"
+                            ? "bg-blue-300 text-black"
                             : program.level === "Intermediate"
-                            ? "bg-yellow-100 text-yellow-800"
+                            ? "bg-blue-300 text-black"
                             : program.level === "Advanced"
-                            ? "bg-blue-100 text-blue-800"
+                            ? "bg-blue-300 text-black"
                             : program.level === "Highest"
-                            ? "bg-red-100 text-red-800"
-                            : "bg-gray-100 text-gray-800"
+                            ? "bg-blue-300 text-black"
+                            : "bg-blue-300 text-black"
                         }`}
                       >
                         {program.level}

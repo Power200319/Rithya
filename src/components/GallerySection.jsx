@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { GalleryHorizontal } from "lucide-react";
-import kids from "../assets/gallery1.jpg";
-import training from "../assets/gallery2.jpg";
+import kids from "../assets/gallery5.jpg";
+import training from "../assets/gallery4.jpg";
 import competition from "../assets/gallery3.jpg";
-import facilities from "../assets/gallery4.jpg";
-import events from "../assets/gallery5.jpg";
-import kid1 from "../assets/Program3.JPG";
+import facilities from "../assets/gallery6.jpg";
+import events from "../assets/gallery7.jpg";
+import kid1 from "../assets/gallery8.jpg";
 
 // Gallery Data
 const galleryItems = [
@@ -15,16 +15,6 @@ const galleryItems = [
   { id: 4, image: facilities, category: "គ្រឿងបរិក្ខារ", title: "Facilities" },
   { id: 5, image: events, category: "កម្មវិធី", title: "Events" },
   { id: 6, image: kid1, category: "កុមារ", title: "Kids" },
-];
-
-// Filter Options
-const categories = [
-  "ទាំងអស់",
-  "កំពុងហ្វឹកហាត់",
-  "ការប្រកួត",
-  "កុមារ",
-  "គ្រឿងបរិក្ខារ",
-  "កម្មវិធី",
 ];
 
 const GallerySection = () => {

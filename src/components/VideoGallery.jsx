@@ -2,9 +2,6 @@ import { useState } from "react";
 import { Button } from "../components/ui/Button";
 import { Video, Play } from "lucide-react";
 import { cn } from "../lib/utils";
-import v2 from "../../public/video/technical1.mp4";
-import v3 from "../../public/video/event.mp4";
-import v5 from "../../public/video/lesson1.mp4";
 
 const videoItems = [
   {
