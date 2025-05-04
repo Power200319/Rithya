@@ -32,7 +32,7 @@ const AboutSection = () => {
             className={`text-gray-800 text-body leading-relaxed max-w-md  ${
               expanded ? "" : "line-clamp-1"
             }`}
-            style={{ textAlign: 'justify',  padding: '0 10px' }}
+            style={{ textAlign: 'justify', textJustify: 'inter-word'}}
           >
             &nbsp;&nbsp;&nbsp;ស្វែងយល់ពីអ្វីគ្រប់យ៉ាងដែលអ្នកត្រូវដឹងអំពីកីឡាហែល ទឹករបស់កម្ពុជា
             ពីគ្រូដែលមានបទពិសោធន៏ អតីតកីឡាករ កីឡាការិនីជម្រើសជាតិ
@@ -66,8 +66,8 @@ const AboutSection = () => {
             </h3>
             {listExpanded && (
               <p
-                className="list-disc list-inside text-gray-700 text-sm space-y-2 text-justify text-body "
-                style={{ wordSpacing: "2px" }}
+                className="list-disc list-inside text-gray-700 text-sm space-y-2 text-body "
+                style={{ textAlign: 'justify', textJustify: 'inter-word'}}
               >
                 &nbsp;&nbsp;&nbsp;ការហែលទឹក គឺកីឡាមួយដែលមានភាពសប្បាយរីករាយជាច្រើន
                 សម្រាប់មនុស្សគ្រប់ៗវ័យ និងកុមារ និងទទួលបាន
