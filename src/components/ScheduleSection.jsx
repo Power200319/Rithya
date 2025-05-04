@@ -115,7 +115,7 @@ const ScheduleSection = () => {
           ថ្នាក់បង្រៀនហែលទឹកកម្រិតមូលដ្ឋាន ដល់កម្រិតខ្ពស់
         </h2>
         <p className="text-gray-700 text-xl text-aqua-500​ text-body text-aqua-500 mt-6">
-          តារាងតម្លៃថ្នាក់បង្រៀនហែលទឹក សហព័ន្ធជខ្មែរកីឡាហែលទឹក
+          តារាងតម្លៃថ្នាក់បង្រៀនហែលទឹក សហព័ន្ធខ្មែរកីឡាហែលទឹក
         </p>
         <div className="w-24 h-1 bg-aqua-500 mx-auto my-4"></div>
 
