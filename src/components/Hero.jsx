@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import p1 from "../assets/Hero1.JPG";
 import p2 from "../assets/Hero2.JPG";
 import p3 from "../assets/Hero3.JPG";
+import p3 from "../assets/gallery1.jpg";
 
-const images = [p1, p2, p3];
+const images = [p1, p2, p3, p4];
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
