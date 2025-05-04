@@ -34,7 +34,7 @@ const AboutSection = () => {
             }`}
             style={{ textAlign: 'justify',  padding: '0 10px' }}
           >
-            &nbsp;&nbsp;&nbsp;ស្វែងយល់ពីអ្វីគ្រប់យ៉ាងដែលអ្នកត្រូវដឹងអំពីកីឡាហែល ទឹករបស់កម្ពុជា
+            &nbsp;&nbsp;&nbsp;&nbsp;ស្វែងយល់ពីអ្វីគ្រប់យ៉ាងដែលអ្នកត្រូវដឹងអំពីកីឡាហែល ទឹករបស់កម្ពុជា
             ពីគ្រូដែលមានបទពិសោធន៏ អតីតកីឡាករ កីឡាការិនីជម្រើសជាតិ
             ធ្នាប់ចូលរួមប្រកួតហែលទឹក ទាំង ថ្នាក់ជាតិ និងអន្តរជាតិ
             និងជាពិសេសដែលទទួលស្គាល់ពី សហព័ន្ធខ្មែរកីឡាហែលទឹក ដែលបានចូលរួមបណ្តុះ
@@ -66,10 +66,10 @@ const AboutSection = () => {
             </h3>
             {listExpanded && (
               <p
-                className="list-disc list-inside text-gray-700 text-sm space-y-2 text-start text-body "
+                className="list-disc list-inside text-gray-700 text-sm space-y-2 text-justify text-body "
                 style={{ wordSpacing: "2px" }}
               >
-                ការហែលទឹក គឺកីឡាមួយដែលមានភាពសប្បាយរីករាយជាច្រើន
+                &nbsp;&nbsp;&nbsp;&nbsp;ការហែលទឹក គឺកីឡាមួយដែលមានភាពសប្បាយរីករាយជាច្រើន
                 សម្រាប់មនុស្សគ្រប់ៗវ័យ និងកុមារ និងទទួលបាន
                 ភាពរីករាយជាមួយខ្លួនឯងនៅក្នុងទឹកប្រកបដោយភាពជឿជាក់។
                 <br />
