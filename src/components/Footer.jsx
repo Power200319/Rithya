@@ -18,11 +18,11 @@ const Footer = () => {
               />
               <span className="text-xl font-bold"></span>
             </div>
-            <p className="text-gray-300 mb-4 text-body1 grid grid-cols-1 gap-4">
+            <div className="text-gray-300 mb-4 text-body1 grid grid-cols-1 gap-4">
               <h3>ទំនុកចិត្ត Trust </h3>
               <h3>គុណភាព Value </h3>
               <h3>និងរីកចម្រើន Development</h3>
-            </p>
+            </div>
             <div className="flex space-x-4">
               {["facebook", "twitter", "instagram"].map((social) => (
                 <a
@@ -105,7 +105,9 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="text-aqua-400 flex-shrink-0" size={18} />
-                <span className="text-gray-300">012 347 400 / 088 888 9400</span>
+                <span className="text-gray-300">
+                  012 347 400 / 088 888 9400
+                </span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="text-aqua-400 flex-shrink-0" size={18} />
@@ -116,10 +118,10 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-navy-600 mt-12 pt-8 text-center text-gray-400 text-sm">
-          <p>
+          <div>
             © {new Date().getFullYear()} Rithya Swimming School. All rights
             reserved.
-          </p>
+          </div>
         </div>
       </div>
     </footer>

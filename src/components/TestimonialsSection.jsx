@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Card } from "./ui/Card";
 import teacher1 from "../assets/teacher1.jpg";
-import teacher2 from "../assets/teacher2.jpg";
+import teacher2 from "../assets/teacher4.jpg";
 import teacher3 from "../assets/teacher3.jpg";
-import teacher4 from "../assets/teacher4.jpg";
+import teacher4 from "../assets/teacher2.jpg";
 
 const testimonials = [
   {
@@ -61,46 +61,46 @@ const TestimonialsSection = () => {
 
         {/* Top Card */}
         <div className="flex justify-center mb-8">
-          <Card
-            className="p-6 bg-white shadow-lg border-aqua-500 max-w-md w-full hover-scale transition-all"
+          <div
+            className="p-6  max-w-md w-full hover-scale transition-all"
             onClick={() => setActiveIndex(0)}
           >
             <div className="flex justify-center mb-4 ">
               <img
                 src={topTestimonial.image}
                 alt={topTestimonial.name}
-                className=" hover:scale-115 transition-transform duration-300 object-contain rounded-full w-32 h-32 "
+                className=" hover:scale-115 transition-transform duration-300 object-contain rounded-full w-35 h-35 border-4 border-white shadow-lg"
               />
             </div>
             <p className="font-semibold text-navy-800 text-center text-head mt-7">
               {topTestimonial.name}
             </p>
-          </Card>
+          </div>
         </div>
 
         {/* Bottom 3 Cards */}
-        <div className="flex md:grid overflow-x-auto gap-6 md:grid-cols-3 pb-4 -mx-4 px-4 no-scrollbar">
+        <div className="flex md:grid overflow-x-auto gap-6 md:grid-cols-3 pb-4 -mx-4 px-4 no-scrollbar ">
           {bottomTestimonials.map((testimonial, index) => (
-            <Card
+            <div
               key={testimonial.id}
-              className={`min-w-[250px] md:min-w-0 flex-shrink-0 p-6 bg-gray-50 hover-scale transition-all duration-300 ${
+              className={`min-w-[250px] md:min-w-0 flex-shrink-0 p-6  hover-scale transition-all duration-300 ${
                 activeIndex === index + 1
                   ? "border-aqua-500 shadow-lg bg-white"
                   : ""
               }`}
               onClick={() => setActiveIndex(index + 1)}
             >
-              <div className="flex justify-center mb-4">
+              <div className="flex justify-center mb-4 ">
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}
-                  className="hover:scale-115 transition-transform duration-300 object-contain rounded-full w-32 h-32"
+                  className="hover:scale-115 transition-transform duration-300 object-contain rounded-full w-32 h-32 border-4 border-white shadow-lg"
                 />
               </div>
               <p className="font-semibold text-navy-800 text-center text-head mt-7">
                 {testimonial.name}
               </p>
-            </Card>
+            </div>
           ))}
         </div>
       </div>

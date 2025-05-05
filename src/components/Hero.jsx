@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import p1 from "../assets/Hero1.JPG";
 import p2 from "../assets/Hero2.JPG";
 import p3 from "../assets/Hero3.JPG";
-import p4 from "../assets/gallery1.jpg";
+import p4 from "../assets/Hero4.JPG";
 
 const images = [p1, p2, p3, p4];
 

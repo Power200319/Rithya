@@ -102,7 +102,7 @@ const ProgramsSection = () => {
 
 
         {/* Desktop Filters */}
-        <div className="hidden md:flex flex-wrap justify-center gap-4 mb-12">
+        <div className="hidden md:flex flex-wrap justify-center gap-4 mb-12 ">
           {filters.map((filter) => (
             <button
               key={filter.id}
@@ -119,7 +119,7 @@ const ProgramsSection = () => {
         </div>
 
         {/* Mobile View with Horizontal Scroll */}
-        <div className="block md:hidden w-full overflow-x-auto scroll-smooth pb-4 no-scrollbar">
+        <div className="block md:hidden w-full overflow-x-auto scroll-smooth pb-4 no-scrollbar ">
           <div className="flex gap-4 min-w-max px-2">
             {filteredPrograms.map((program) => (
               <div

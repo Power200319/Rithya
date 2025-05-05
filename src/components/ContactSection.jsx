@@ -150,7 +150,7 @@ const ContactSection = () => {
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d7817.820319202874!2d104.913674!3d11.558298!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTHCsDMzJzI5LjkiTiAxMDTCsDU0JzQ5LjIiRQ!5e0!3m2!1sen!2skh!4v1746276250104!5m2!1sen!2skh"
               className="w-full h-full border-0"
-              allowfullscreen
+              allowFullScreen
               loading="lazy"
               title="Map location of Rithya Swimming Club"
             ></iframe>
