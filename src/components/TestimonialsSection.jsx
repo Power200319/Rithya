@@ -7,7 +7,7 @@ import teacher4 from "../assets/teacher2.jpg";
 const testimonials = [
   {
     id: 1,
-    name: "នាង​ សូរិទ្ធិយ៉ា ( Neang Sorithya )",
+    name: "នាង​ សូរិទ្ធិយ៉ា ",
     role: "Parent of 2 swimmers",
     image: teacher1,
     quote:
@@ -16,7 +16,7 @@ const testimonials = [
   },
   {
     id: 2,
-    name: "ភិន​ រដ្ឋា​ ( Phin Ratha )",
+    name: "ភិន​ រដ្ឋា​ ",
     role: "Adult learner",
     image: teacher2,
     quote:
@@ -25,7 +25,7 @@ const testimonials = [
   },
   {
     id: 3,
-    name: "អ៊ូន​ ម៉ានីត​ ( Oun Manit )",
+    name: "អ៊ូន​ ម៉ានីត​ ",
     role: "Competitive swimmer",
     image: teacher3,
     quote:
@@ -34,11 +34,28 @@ const testimonials = [
   },
   {
     id: 4,
-    name: "ចេង​ សុផា​ ( Cheng Pha )",
+    name: "ចេង​ សុផា​ ",
     role: "Parent",
     image: teacher4,
     rating: 5,
   },
+];
+
+const colors = [
+  "bg-gray-200 rounded-t-lg",
+  "bg-white",
+  "bg-gray-200",
+  "bg-white",
+  "bg-gray-200",
+  "bg-white",
+  "bg-gray-200",
+  "bg-white",
+  "bg-gray-200",
+  "bg-white",
+  "bg-gray-200",
+  "bg-white",
+  "bg-gray-200",
+  "bg-white rounded-b-lg",
 ];
 
 const TestimonialsSection = () => {
@@ -47,13 +64,15 @@ const TestimonialsSection = () => {
   const [activeButton, setActiveButton] = useState(null);
 
   const toggleInfo = (buttonId, messageArray) => {
-    if (activeButton === buttonId) {
-      setInfo([]);
-      setActiveButton(null);
-    } else {
-      setInfo(messageArray);
-      setActiveButton(buttonId);
-    }
+    setActiveButton((prev) => {
+      if (prev === buttonId) {
+        setInfo([]);
+        return null;
+      } else {
+        setInfo(messageArray);
+        return buttonId;
+      }
+    });
   };
 
   const topTestimonial = testimonials[0];
@@ -70,7 +89,7 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Top Card */}
-        <div className="flex flex-col items-center mb-8 ">
+        <div className="flex flex-col items-center mb-8">
           <div
             className="p-6 max-w-md w-full hover-scale transition-all"
             onClick={() => setActiveIndex(0)}
@@ -88,45 +107,68 @@ const TestimonialsSection = () => {
           </div>
 
           {/* Toggle Buttons */}
-          <div className="mt-6 space-x-4 flex flex-col sm:flex-row justify-center items-center">
-            <button
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition mb-2 sm:mb-0 text-body3 "
-              onClick={() =>
-                toggleInfo(1, [
-                  "២០១៨ - បច្ចុប្បន្ន : មន្ត្រី​បច្ចេកទេស​អន្តរជាតិ​",
-                  "២០២៣ : World Aquatic Junior Championship 2023, ប្រទេសអ៊ីស្រាអែល",
-                  "២០២៣ : 32nd SEA Games 2023, ប្រទេសកម្ពុជា",
-                  "២០២២ : 11th Asian Para Games, ប្រទេសឥណ្ឌូនេស៊ី",
-                  "២០២២ : 44th Sea Age Group Swimming Championship, ប្រទេសម៉ាឡេស៊ី",
-                  "២០២១ : 31st SEA Games, ប្រទេសវៀតណាម",
-                  "២០១៩ : 30th SEA Games, ប្រទេសហ្វីលីពីន",
-                  "២០១៩ : 43rd Sea Age Group Championship, ប្រទេសកម្ពុជា",
-                  "២០១៨ : 13th FINA World Swimming Officials Seminar, ប្រទេសហុងគ្រី",
-                  "២០១៧ : FINA Swimming School for Officials, ប្រទេសថៃ",
-                ])
-              }
-            >
-              <div className="text-body3">
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-1 max-w-md w-full">
+            {activeButton !== 2 && (
+              <button
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition text-body3 overflow-hidden "
+                onClick={() =>
+                  toggleInfo(1, [
+                    "២០១៨ - បច្ចុប្បន្ន : មន្ត្រីបច្ចេកទេសកីឡាហែលទឹកអន្តរជាតិ តំណាងកម្ពុជា​",
+                    "២០២៤ : បានចូលរួមកាត់សេចក្តីការប្រកួតកីឡាហែលទឹក យុវជន អាស៊ីអាគ្នេយ៏ លើកទី៤៦ នៅប្រទេសថៃ",
+                    "២០២៣ : បានចូលរួមកាត់សេចក្តីការប្រកួតហែលទឹក យុវជនពីភពលោក នៅប្រទេស អីស្រាអែល",
+                    "២០២៣ : បានចូលរួមកាត់សេចក្តី កីឡាស៊ីហ្គេម (ហែលទឹក) លើកទី៣២ នៅប្រទេសកម្ពុជា",
+                    "២០២២ : បានចូលរួមកាត់សេចក្តីកីឡាហែលទឹកជនពិការ លើកទី១១ ប្រទេសឥណ្ឌូនេស៊ី",
+                    "២០២២ : បានចូលរួមកាត់សេចក្តី ការប្រកួតកីឡាហែលទឹក យុវជន អាស៊ីអាគ្នេយ៏ លើកទី៤៤ ប្រទេសម៉ាឡេស៊ី",
+                    "២០២១ : បានចូលរួមកាត់សេចក្តី កីឡាស៊ីហ្គេម (ហែលទឹក) លើកទី៣១ ប្រទេសវៀតណាម",
+                    "២០១៩ : បានចូលរួមកាត់សេចក្តី កីឡាស៊ីហ្គេម (ហែលទឹក) លើកទី៣០ ប្រទេសហ្វីលីពីន",
+                    "២០១៩ : បានចូលរួមកាត់សេចក្តី ការប្រកួតហែលទឹក យុវជនអាស៊ីអាគ្នេយ៏ លើកទី៤៣ ប្រទេសកម្ពុជា",
+                    "២០១៨: បានចូលរូមសិក្សាវគ្គមន្រ្តីបច្ចេកទេសអន្តរជាតិ លើកទី១៣ ប្រទេសហុងគ្រី",
+                    "២០១៧ : បានចូលរួមសិក្សាវគ្គមន្រ្តីបច្ចេកទេសកីឡាហែលទឹកនិងបានប្រឡងជាប់ជាមន្រ្តីបច្ចេកទេសអន្តរជាតិនៅប្រទេសថៃ",
+                  ])
+                }
+              >
                 បទពិសោធន៍​មន្ត្រី​បច្ចេកទេស​អន្តរជាតិ
-              </div>
-            </button>
+              </button>
+            )}
 
-            <button
-              className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition "
-              onClick={() => toggleInfo(2, ["នេះជាព័ត៌មានពី Button 2"])}
-            >
-              <div className="text-body3">
-                បទពិសោធន៍​ដឹក​នាំ​ក្រុម​ចូល​រួម​ប្រកួត​អន្តរជាតិ
-              </div>
-            </button>
+            {activeButton !== 1 && (
+              <button
+                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition text-body3 overflow-hidden "
+                onClick={() =>
+                  toggleInfo(2, [
+                    "ឆ្នាំ២០១០ - បច្ចុប្បន្ន ជាប់ជាគ្រូបង្វឹកកីឡាហែលទឹកជម្រើសជាតិកម្ពុជា",
+                    "ឆ្នាំ២០១៤ ចូលរួមកម្មវិធីហ្វឹកហាត់បោះជំរុំ យុវជនអាស៊ី នៅប្រទេសកាតា",
+                    "ឆ្នាំ២០១៥ ដឹកនាំក្រុមកីឡាករ កីឡាការិនីចូលរួមការប្រកួតកីឡាសិស្សអាស៊ីអាគ្នេយ៍ នៅប្រទេសសឹង្ហបុរី",
+                    "ឆ្នាំ២០១៦ ដឹកនាំក្រុមកីឡាករ កីឡាការិនីចូលរួមការប្រកួតកីឡាហែលទឹកពិភពលោក នៅប្រទេសកាណាដា",
+                    "ឆ្នាំ២០១៧ ចូលរួមកម្មវិធីហ្វឹកហាត់បោះជំរុំ យុវជនអាស៊ី នៅប្រទេសចិន",
+                    "ឆ្នាំ២០១៨ ដឹកនាំក្រុមកីឡាករ កីឡាការិនីចូលរួមការប្រកួតកីឡានិស្សិតអាស៊ីអាគ្នេយ៍ នៅប្រទេសមីយ៉ាន់ម៉ា",
+                    "ឆ្នាំ២០១៨ ចូលរួមកម្មវិធីហ្វឹកហាត់បោះជំរុំ និងដំណើរទស្សនកិច្ចនៅប្រទេសជប៉ុន",
+                    "ឆ្នាំ២០១៩ ចូលរួមកម្មវិធីហ្វឹកហាត់បោះជំរុំ យុវជនអាស៊ីនៅប្រទេសកាតា",
+                    "ឆ្នាំ២០១៩ ការដឹកនាំក្រុមកីឡាករ កីឡាការិនីចូលរួមការប្រកួតកីឡាសិស្សអាស៊ីអាគ្នេយ៍ នៅប្រទេសឥណ្ឌូនឹស៊ី",
+                    "ឆ្នាំ២០២១ ដឹកនាំក្រុមកីឡាករ កីឡាការិនីចូលរួមការប្រកួតកីឡាហែលទឹកពិភពលោក នៅប្រទេសឌូបៃ",
+                    "ឆ្នាំ២០២២ ដឹកនាំក្រុមកីឡាករ កីឡាការិនីចូលរួមការប្រកួតកីឡាហែលទឹកពិភពលោក នៅប្រទេសហុងគ្រី",
+                    "ឆ្នាំ២០២៣ ដឹកនាំក្រុមកីឡាករ កីឡាការិនីចូលរួមការប្រកួតកីឡាទឹកពិភពលោក នៅប្រទេសកាតា",
+                    "ឆ្នាំ២០២៤ ការដឹកនាំក្រុមកីឡាករ កីឡាការិនីចូលរួមការប្រកួតកីឡាសិស្សអាស៊ីអាគ្នេយ៍ ប្រទេសវៀតណាម",
+                    "ឆ្នាំ២០២៤ ដឹកនាំក្រុមកីឡាករ កីឡាការិនីចូលរួមប្រកួតការកីឡាទឹកពិភពលោក នៅប្រទេសហុងគ្រី",
+                  ])
+                }
+              >
+                បទពិសោធន៍​ដឹក​នាំ​ក្រុម​ប្រកួត​អន្តរជាតិ
+              </button>
+            )}
           </div>
 
           {/* Show Info */}
           {info.length > 0 && (
-            <ul className="mt-4 font-medium text-justify bg-white p-4 rounded-2xl text-gray-800 list-disc list-inside space-y-2 max-w-md">
-              {info.map((item, index) => (
-                <li key={index} className="text-body3">{item}</li>
-              ))}
+            <ul className="mt-4 font-medium text-justify rounded-2xl text-gray-800 list-disc list-inside max-w-md w-full shadow">
+              {info.map((item, index) => {
+                const colorClass = colors[index % colors.length];
+                return (
+                  <li key={index} className={`${colorClass} p-1 text-body3`}>
+                    {item}
+                  </li>
+                );
+              })}
             </ul>
           )}
         </div>

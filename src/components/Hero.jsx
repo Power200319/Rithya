@@ -3,8 +3,10 @@ import p1 from "../assets/Hero1.JPG";
 import p2 from "../assets/Hero2.JPG";
 import p3 from "../assets/Hero3.JPG";
 import p4 from "../assets/Hero4.JPG";
+import p5 from "../assets/Hero5.JPG";
+import p6 from "../assets/Hero6.JPG";
 
-const images = [p1, p2, p3, p4];
+const images = [p6, p2, p3, p4, p5, p1];
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

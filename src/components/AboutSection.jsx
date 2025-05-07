@@ -1,6 +1,7 @@
 import { useState } from "react";
 import v1 from "../assets/about1.jpg";
 import p1 from "../assets/about.png";
+import gift from "../assets/vd.gif";
 
 const AboutSection = () => {
   const [expanded, setExpanded] = useState(false);
@@ -52,6 +53,9 @@ const AboutSection = () => {
           </button>
         </div>
 
+        <div className="block md:hidden">
+          <img src={gift} alt="" />
+        </div>
         {/* RIGHT: Video and Description */}
         <div className="bg-white shadow-md rounded-xl overflow-hidden">
           <img

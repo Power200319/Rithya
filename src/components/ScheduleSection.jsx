@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { X } from "lucide-react";
+import schedule from "../assets/schedule.jpg";
 
 const trainingOptions = [
   {
@@ -111,11 +112,20 @@ const ScheduleSection = () => {
   return (
     <section id="schedule" className="section-padding bg-white">
       <div className="container mx-auto px-4 py-10 text-center">
+        <div className="pb-10 pt-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-aqua-500 mb-4 text-head">
+            ថ្នាក់បង្រៀនហែលទឹកកម្រិតមូលដ្ឋាន ដល់កម្រិតខ្ពស់
+          </h2>
+          <p className="text-gray-700 text-xl text-aqua-500​ text-body text-aqua-500 mt-6 pb-5">
+            កាលវិភាគ សម្រាប់ការហ្វឹកហាត់ ថ្ងៃចន្ទ-សុក្រ និងថ្ងៃសៅរ៍-អាទិត្យ
+          </p>
+          <img src={schedule} alt="" />
+        </div>
         <h2 className="text-2xl md:text-3xl font-bold text-aqua-500 mb-4 text-head">
           ថ្នាក់បង្រៀនហែលទឹកកម្រិតមូលដ្ឋាន ដល់កម្រិតខ្ពស់
         </h2>
         <p className="text-gray-700 text-xl text-aqua-500​ text-body text-aqua-500 mt-6">
-          តារាងតម្លៃថ្នាក់បង្រៀនហែលទឹក សហព័ន្ធខ្មែរកីឡាហែលទឹក
+          តារាងតម្លៃថ្នាក់បង្រៀនហែលទឹកគ្រប់កម្រិតថ្នាក់
         </p>
         <div className="w-24 h-1 bg-aqua-500 mx-auto my-4"></div>
 
