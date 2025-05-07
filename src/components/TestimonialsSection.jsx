@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Card } from "./ui/Card";
 import teacher1 from "../assets/teacher1.jpg";
 import teacher2 from "../assets/teacher4.jpg";
 import teacher3 from "../assets/teacher3.jpg";
@@ -44,8 +43,19 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [info, setInfo] = useState([]);
+  const [activeButton, setActiveButton] = useState(null);
 
-  // Split the array
+  const toggleInfo = (buttonId, messageArray) => {
+    if (activeButton === buttonId) {
+      setInfo([]);
+      setActiveButton(null);
+    } else {
+      setInfo(messageArray);
+      setActiveButton(buttonId);
+    }
+  };
+
   const topTestimonial = testimonials[0];
   const bottomTestimonials = testimonials.slice(1);
 
@@ -60,37 +70,80 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Top Card */}
-        <div className="flex justify-center mb-8">
+        <div className="flex flex-col items-center mb-8 ">
           <div
-            className="p-6  max-w-md w-full hover-scale transition-all"
+            className="p-6 max-w-md w-full hover-scale transition-all"
             onClick={() => setActiveIndex(0)}
           >
-            <div className="flex justify-center mb-4 ">
+            <div className="flex justify-center mb-4">
               <img
                 src={topTestimonial.image}
                 alt={topTestimonial.name}
-                className=" hover:scale-115 transition-transform duration-300 object-contain rounded-full w-35 h-35 border-4 border-white shadow-lg"
+                className="hover:scale-115 transition-transform duration-300 object-contain rounded-full w-35 h-35 border-4 border-white shadow-lg"
               />
             </div>
             <p className="font-semibold text-navy-800 text-center text-head mt-7">
               {topTestimonial.name}
             </p>
           </div>
+
+          {/* Toggle Buttons */}
+          <div className="mt-6 space-x-4 flex flex-col sm:flex-row justify-center items-center">
+            <button
+              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition mb-2 sm:mb-0 text-body3 "
+              onClick={() =>
+                toggleInfo(1, [
+                  "២០១៨ - បច្ចុប្បន្ន : មន្ត្រី​បច្ចេកទេស​អន្តរជាតិ​",
+                  "២០២៣ : World Aquatic Junior Championship 2023, ប្រទេសអ៊ីស្រាអែល",
+                  "២០២៣ : 32nd SEA Games 2023, ប្រទេសកម្ពុជា",
+                  "២០២២ : 11th Asian Para Games, ប្រទេសឥណ្ឌូនេស៊ី",
+                  "២០២២ : 44th Sea Age Group Swimming Championship, ប្រទេសម៉ាឡេស៊ី",
+                  "២០២១ : 31st SEA Games, ប្រទេសវៀតណាម",
+                  "២០១៩ : 30th SEA Games, ប្រទេសហ្វីលីពីន",
+                  "២០១៩ : 43rd Sea Age Group Championship, ប្រទេសកម្ពុជា",
+                  "២០១៨ : 13th FINA World Swimming Officials Seminar, ប្រទេសហុងគ្រី",
+                  "២០១៧ : FINA Swimming School for Officials, ប្រទេសថៃ",
+                ])
+              }
+            >
+              <div className="text-body3">
+                បទពិសោធន៍​មន្ត្រី​បច្ចេកទេស​អន្តរជាតិ
+              </div>
+            </button>
+
+            <button
+              className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition "
+              onClick={() => toggleInfo(2, ["នេះជាព័ត៌មានពី Button 2"])}
+            >
+              <div className="text-body3">
+                បទពិសោធន៍​ដឹក​នាំ​ក្រុម​ចូល​រួម​ប្រកួត​អន្តរជាតិ
+              </div>
+            </button>
+          </div>
+
+          {/* Show Info */}
+          {info.length > 0 && (
+            <ul className="mt-4 font-medium text-justify bg-white p-4 rounded-2xl text-gray-800 list-disc list-inside space-y-2 max-w-md">
+              {info.map((item, index) => (
+                <li key={index} className="text-body3">{item}</li>
+              ))}
+            </ul>
+          )}
         </div>
 
-        {/* Bottom 3 Cards */}
-        <div className="flex md:grid overflow-x-auto gap-6 md:grid-cols-3 pb-4 -mx-4 px-4 no-scrollbar ">
+        {/* Bottom Cards */}
+        <div className="flex md:grid overflow-x-auto gap-6 md:grid-cols-3 pb-4 -mx-4 px-4 no-scrollbar">
           {bottomTestimonials.map((testimonial, index) => (
             <div
               key={testimonial.id}
-              className={`min-w-[250px] md:min-w-0 flex-shrink-0 p-6  hover-scale transition-all duration-300 ${
+              className={`min-w-[250px] md:min-w-0 flex-shrink-0 p-6 hover-scale transition-all duration-300 ${
                 activeIndex === index + 1
                   ? "border-aqua-500 shadow-lg bg-white"
                   : ""
               }`}
               onClick={() => setActiveIndex(index + 1)}
             >
-              <div className="flex justify-center mb-4 ">
+              <div className="flex justify-center mb-4">
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}

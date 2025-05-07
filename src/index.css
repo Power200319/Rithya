@@ -89,6 +89,9 @@ html {
   opacity: 1;
   transform: rotate(-45deg) translateY(100%);
 }
+.text-size{
+  font-size: 15px;
+}
 
 .text-head {
   font-family: "Moul", serif;
@@ -106,6 +109,11 @@ html {
   font-family: "Khmer", sans-serif;
   font-weight: 400;
   font-size: 12px;
+}
+.text-body3 {
+  font-family: "Khmer", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
 }
 .text-body2 {
   font-family: "Khmer", sans-serif;
