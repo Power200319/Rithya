@@ -179,7 +179,7 @@ const AboutSection = () => {
                 </div>
               </div>
             </DialogTrigger>
-            <DialogContent ref={dialogRef} className="sm:max-w-[600px] bg-white max-h-[500px] overflow-y-auto">
+            <DialogContent key={currentIndex} ref={dialogRef} className="sm:max-w-[600px] bg-white max-h-[500px] overflow-y-auto">
               <DialogHeader>
                 <DialogTitle className="text-head">
                   {details[currentIndex].title}
