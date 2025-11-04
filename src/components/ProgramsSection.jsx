@@ -126,7 +126,7 @@ const ProgramsSection = () => {
                 key={program.id}
                 className="min-w-[300px] flex-shrink-0 text-body snap-center"
               >
-                <Card className="overflow-hidden">
+                <Card className="overflow-hidden shadow-lg border-0">
                   <div className="w-full h-[250px] overflow-hidden">
                     <img
                       src={program.image}
@@ -167,7 +167,7 @@ const ProgramsSection = () => {
                     <Button
                       asChild
                       variant="outline"
-                      className="w-full border-aqua-500 text-aqua-600 card text-body"
+                      className="w-full text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                       onClick={() => toggleDescription(program.id)}
                     >
                       <Link to="#">
@@ -185,7 +185,7 @@ const ProgramsSection = () => {
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-body">
           {filteredPrograms.map((program) => (
             <div key={program.id} className="hover-scale">
-              <Card className="overflow-hidden">
+              <Card className="overflow-hidden shadow-lg border-0">
                 <div className="h-48 overflow-hidden">
                   <img
                     src={program.image}
@@ -226,7 +226,7 @@ const ProgramsSection = () => {
                   <Button
                     asChild
                     variant="outline"
-                    className="w-full border-aqua-500 text-aqua-600 card text-body"
+                    className="w-full text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                     onClick={() => toggleDescription(program.id)}
                   >
                     <Link to="#">

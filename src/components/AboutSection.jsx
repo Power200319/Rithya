@@ -4,6 +4,8 @@ import p1 from "../assets/about.png";
 import gift from "../assets/vd.gif";
 import p2 from "../assets/about2.png";
 import p3 from "../assets/about3.png";
+import { Card } from "./ui/Card";
+import { Button } from "./ui/Button";
 import {
   Dialog,
   DialogContent,
@@ -16,6 +18,7 @@ import {
 const AboutSection = () => {
   const [expanded, setExpanded] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [expandedDetailId, setExpandedDetailId] = useState(null);
   const dialogRef = useRef(null);
 
   const details = [
@@ -99,6 +102,10 @@ const AboutSection = () => {
     setExpanded(!expanded);
   };
 
+  const toggleDescription = (id) => {
+    setExpandedDetailId(expandedDetailId === id ? null : id);
+  };
+
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % details.length);
     if (dialogRef.current) {
@@ -117,7 +124,7 @@ const AboutSection = () => {
 
   return (
     <section id="about" className="bg-[#e6f3f7] py-20">
-      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* LEFT: Profile Section */}
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
           <div className="relative rounded-full overflow-hidden border-4 border-white shadow-lg w-54 h-54 mb-6 hover:scale-105 transition-transform duration-300">
@@ -159,7 +166,51 @@ const AboutSection = () => {
           <img src={gift} alt="" />
         </div>
         {/* RIGHT: Image and Description */}
-        <div className="bg-white shadow-md rounded-xl  overflow-hidden">
+        {/* Mobile View with Horizontal Scroll */}
+        <div className="block md:hidden w-full overflow-x-auto scroll-smooth pb-4 no-scrollbar">
+          <div className="flex gap-4 min-w-max px-2">
+            {details.map((detail) => (
+              <div
+                key={detail.id || detail.title}
+                className="w-full max-w-[300px] flex-shrink-0 text-body snap-center"
+              >
+                <Card className="overflow-hidden shadow-lg border-0">
+                  <div className="w-full h-[250px] overflow-hidden">
+                    <img
+                      src={detail.image}
+                      alt={detail.title}
+                      className=" h-full  transition-transform duration-700 hover:scale-110"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-xl font-bold text-navy-800 text-body mb-3 truncate">
+                      {detail.title}
+                    </h3>
+                    {expandedDetailId === (detail.id || detail.title) ? (
+                      <div
+                        className="text-gray-700 text-sm space-y-2 mb-6"
+                        style={{ textAlign: "justify", textJustify: "inter-word" }}
+                        dangerouslySetInnerHTML={{ __html: detail.description }}
+                      />
+                    ) : (
+                      <div className="mb-6 h-5"></div>
+                    )}
+                    <Button
+                      variant="outline"
+                      className="w-full  text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                      onClick={() => toggleDescription(detail.id || detail.title)}
+                    >
+                      {expandedDetailId === (detail.id || detail.title) ? "បិទ" : "អានបន្ថែម"}
+                    </Button>
+                  </div>
+                </Card>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop View */}
+        <div className="hidden md:block bg-white shadow-md rounded-xl overflow-hidden">
           <Dialog>
             <DialogTrigger asChild>
               <div className="cursor-pointer">
