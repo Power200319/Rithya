@@ -172,7 +172,7 @@ const AboutSection = () => {
             {details.map((detail) => (
               <div
                 key={detail.id || detail.title}
-                className="w-full max-w-[300px] flex-shrink-0 text-body snap-center"
+                className="w-full max-w-[354px] flex-shrink-0 text-body snap-center"
               >
                 <Card className="overflow-hidden shadow-lg border-0">
                   <div className="w-full h-[250px] overflow-hidden">
@@ -183,7 +183,7 @@ const AboutSection = () => {
                     />
                   </div>
                   <div className="p-4">
-                    <h3 className="text-xl font-bold text-navy-800 text-body mb-3 truncate">
+                    <h3 className={`text-xl font-bold text-navy-800 text-body mb-3 ${expandedDetailId === (detail.id || detail.title) ? '' : 'truncate'}`}>
                       {detail.title}
                     </h3>
                     {expandedDetailId === (detail.id || detail.title) ? (
