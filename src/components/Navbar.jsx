@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "../components/ui/Button";
 import logo from "../assets/SWIMMING_Logo.png";
 
-const Navbar = () => {
+const Navbar = ({ onAdminClick, user, onLogout }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -83,11 +83,38 @@ const Navbar = () => {
               {item.label}
             </a>
           ))}
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeh_IBmsqMSXlCWiLvPopAI7wB_B9KHF3Sh6zVgzU9pwo8-pQ/viewform?usp=sharing">
-            <Button className="bg-aqua-500 hover text-white">
-              <span className="text-body">ចុះឈ្មោះឥឡូវ</span>
-            </Button>
-          </a>
+          {user ? (
+            <div className="flex items-center space-x-4">
+              <span className={`text-sm ${isScrolled ? "text-navy-700" : "text-white"}`}>
+                Welcome, {user.username}
+              </span>
+              <Link to="/admin">
+                <Button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2">
+                  <span className="text-body">Admin Panel</span>
+                </Button>
+              </Link>
+              <Button
+                onClick={onLogout}
+                className="bg-red-500 hover:bg-red-600 text-white px-4 py-2"
+              >
+                <span className="text-body">Logout</span>
+              </Button>
+            </div>
+          ) : (
+            <>
+              <Button
+                onClick={onAdminClick}
+                className="bg-blue-500 hover:bg-blue-600 text-white mr-2 px-4 py-2"
+              >
+                <span className="text-body">Admin</span>
+              </Button>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSeh_IBmsqMSXlCWiLvPopAI7wB_B9KHF3Sh6zVgzU9pwo8-pQ/viewform?usp=sharing">
+                <Button className="bg-aqua-500 hover:bg-aqua-600 text-white px-4 py-2">
+                  <span className="text-body">ចុះឈ្មោះឥឡូវ</span>
+                </Button>
+              </a>
+            </>
+          )}
         </nav>
 
         {/* Mobile Menu Button */}
@@ -120,15 +147,44 @@ const Navbar = () => {
               )}
             </svg>
           </button> */}
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeh_IBmsqMSXlCWiLvPopAI7wB_B9KHF3Sh6zVgzU9pwo8-pQ/viewform?usp=sharing">
-            <Button className="bg-aqua-500 hover:bg-aqua-600 text-white w-full py-5 justify-center">
-              <span className="text-body1 w-11 text-sm">
-                ចុះឈ្មោះ
-                <br />
-                Register
-              </span>
-            </Button>
-          </a>
+         {user ? (
+           <div className="flex flex-col space-y-2">
+             <span className={`text-sm ${isScrolled ? "text-navy-700" : "text-white"}`}>
+               Welcome, {user.username}
+             </span>
+             <div className="flex space-x-2">
+               <Link to="/admin" className="flex-1">
+                 <Button className="bg-blue-500 hover:bg-blue-600 text-white w-full py-2">
+                   <span className="text-sm">Admin Panel</span>
+                 </Button>
+               </Link>
+               <Button
+                 onClick={onLogout}
+                 className="bg-red-500 hover:bg-red-600 text-white flex-1 py-2"
+               >
+                 <span className="text-sm">Logout</span>
+               </Button>
+             </div>
+           </div>
+         ) : (
+           <>
+             {/* <Button
+               onClick={onAdminClick}
+               className="bg-blue-500 hover:bg-blue-600 text-white w-full mb-2"
+             >
+               <span className="text-sm">Admin Login</span>
+             </Button> */}
+             <a href="https://docs.google.com/forms/d/e/1FAIpQLSeh_IBmsqMSXlCWiLvPopAI7wB_B9KHF3Sh6zVgzU9pwo8-pQ/viewform?usp=sharing" className="w-full">
+               <Button className="bg-aqua-500 hover:bg-aqua-600 text-white w-full py-3 justify-center">
+                 <span className="text-body1 text-sm">
+                   ចុះឈ្មោះ
+                   <br />
+                   Register
+                 </span>
+               </Button>
+             </a>
+           </>
+         )}
         </div>
       </div>
 

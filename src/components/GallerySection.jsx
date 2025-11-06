@@ -1,22 +1,28 @@
-import { useState } from "react";
-import { GalleryHorizontal } from "lucide-react";
-import kids from "../assets/gallery5.jpg";
-import training from "../assets/gallery4.jpg";
-import competition from "../assets/gallery3.jpg";
-import facilities from "../assets/gallery6.jpg";
-import events from "../assets/gallery7.jpg";
-import kid1 from "../assets/gallery8.jpg";
-
-// Gallery Data
-const galleryItems = [
-  { id: 1, image: training, category: "កំពុងហ្វឹកហាត់", title: "Training" },
-  { id: 2, image: competition, category: "ការប្រកួត", title: "Competition" },
-  { id: 3, image: kids, category: "កុមារ", title: "Kids" },
-  { id: 4, image: facilities, category: "គ្រឿងបរិក្ខារ", title: "Facilities" },
-];
+import { useState, useEffect } from "react";
+// import { GalleryHorizontal } from "lucide-react";
 
 const GallerySection = () => {
   const [filter, setFilter] = useState("ទាំងអស់");
+  const [galleryItems, setGalleryItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchGallery = async () => {
+      try {
+        const response = await fetch('https://rithya.onrender.com/api/public/gallery/');
+        if (response.ok) {
+          const data = await response.json();
+          setGalleryItems(data);
+        }
+      } catch (error) {
+        console.error('Error fetching gallery data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchGallery();
+  }, []);
 
   const filteredItems =
     filter === "ទាំងអស់"
@@ -35,27 +41,34 @@ const GallerySection = () => {
         </div>
 
         {/* Gallery Grid */}
-        <div className="flex md:grid overflow-x-auto gap-6 md:grid-cols-3 pb-4 -mx-4 px-4 no-scrollbar">
-          {filteredItems.map((item) => (
-            <div
-              key={item.id}
-              className="min-w-[250px] md:min-w-0 flex-shrink-0 rounded-full bg-gray-50 hover-scale transition-all duration-300"
-            >
-              <img
-                src={item.image}
-                alt={item.title}
-                loading="lazy"
-                className=" h-64 lg:w-full bg-white shadow-md rounded-xl transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-0 w-full p-4 text-white flex items-center">
-                  <GalleryHorizontal size={18} className="mr-2" />
-                  <span>{item.title}</span>
-                </div>
+        {loading ? (
+          <div className="text-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-aqua-500 mx-auto"></div>
+            <p className="text-gray-600 mt-4">Loading gallery...</p>
+          </div>
+        ) : (
+          <div className="flex md:grid overflow-x-auto gap-6 md:grid-cols-3 pb-4 -mx-4 px-4 no-scrollbar">
+            {filteredItems.map((item) => (
+              <div
+                key={item.id}
+                className="min-w-[250px] md:min-w-0 flex-shrink-0 rounded-full bg-gray-50 hover-scale transition-all duration-300 group"
+              >
+                <img
+                  src={item.image_url || item.image}
+                  alt={item.title}
+                  loading="lazy"
+                  className="h-64 lg:w-full bg-white shadow-md rounded-xl transition-transform duration-500 group-hover:scale-110"
+                />
+                {/* <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-0 w-full p-4 text-white flex items-center">
+                    <GalleryHorizontal size={18} className="mr-2" />
+                    <span>{item.title}</span>
+                  </div>
+                </div> */}
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

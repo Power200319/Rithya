@@ -1,28 +1,68 @@
 import { useState, useEffect } from "react";
-import p1 from "../assets/Hero1.JPG";
-import p2 from "../assets/Hero2.JPG";
-import p3 from "../assets/Hero3.JPG";
-import p4 from "../assets/Hero4.JPG";
-import p5 from "../assets/Hero5.JPG";
-import p6 from "../assets/Hero6.JPG";
-
-const images = [p6, p2, p3, p4, p5, p1];
 
 const Hero = () => {
+  const [heroes, setHeroes] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
 
-  // Auto-scroll every 5 seconds
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 8000); // changed to 5000ms = 5s
-    return () => clearInterval(interval);
+    const fetchHeroes = async () => {
+      try {
+        const response = await fetch('https://rithya.onrender.com/api/public/heroes/');
+        if (response.ok) {
+          const data = await response.json();
+          // Ensure data is an array
+          if (Array.isArray(data)) {
+            setHeroes(data);
+          } else {
+            console.error('Heroes data is not an array:', data);
+            setHeroes([]);
+          }
+        } else {
+          console.error('Failed to fetch heroes:', response.status, response.statusText);
+          setHeroes([]);
+        }
+      } catch (error) {
+        console.error('Error fetching heroes:', error);
+        setHeroes([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchHeroes();
   }, []);
+
+  // Auto-scroll every 8 seconds
+  useEffect(() => {
+    if (heroes.length > 0) {
+      const interval = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % heroes.length);
+      }, 8000);
+      return () => clearInterval(interval);
+    }
+  }, [heroes]);
+
+  if (loading) {
+    return (
+      <section id="home" className="relative w-full h-screen flex items-center justify-center bg-black">
+        <div className="text-white">Loading...</div>
+      </section>
+    );
+  }
+
+  if (heroes.length === 0) {
+    return (
+      <section id="home" className="relative w-full h-screen flex items-center justify-center bg-black">
+        <div className="text-white">No hero images available</div>
+      </section>
+    );
+  }
 
   return (
     <section id="home" className="relative w-full flex flex-col items-center justify-center bg-black overflow-hidden">
       <img
-        src={images[currentIndex]}
+        src={heroes[currentIndex]?.image_url}
         alt={`Slide ${currentIndex + 1}`}
         loading="lazy"
         className="max-h-full max-w-full object-contain brightness-75 transition-all duration-1000"
@@ -30,7 +70,7 @@ const Hero = () => {
 
       {/* Slide Indicator Dots */}
       <div className="absolute bottom-6 flex gap-2">
-        {images.map((_, index) => (
+        {heroes.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}

@@ -1,74 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../components/ui/Button";
 import { Card } from "./ui/Card";
-import basic from "../assets/Program1.JPG";
-import advaned from "../assets/Program3.JPG";
-import intermediate from "../assets/Program2.JPG";
-import highest from "../assets/Program4.JPG";
-
-const programs = [
-  {
-    id: "kids-beginners",
-    title: "វគ្គកម្រិតមូលដ្ឋាន",
-    level: "Basic",
-    description: [
-      "ការកសាងទំនុកចិត្តនិងភាពក្លាហានក្នុងទឹក",
-      "ការបណ្តែតខ្លួនលើផ្ទៃទឹកដោយគ្មានជំនួយ",
-      "ការដកដង្ហើមយ៉ាងប្រសិទ្ធភាព",
-      "បច្ចេកទេសគោះជើងក្នុងរបៀបសេរី",
-      "បច្ចេកទេសចលនាដៃក្នុងរបៀបហែលសេរី",
-      "ការហែលទឹករបៀបសេរីចម្ងាយ ២៥ ម៉ែត្រ",
-    ],
-    image: basic,
-  },
-  {
-    id: "intermediate-swimmers",
-    title: "វគ្គកម្រិតមធ្យម",
-    level: "Intermediate",
-    description: [
-      "បន្តពីរកម្រិតមូលដ្ឋាន ១ របៀបហែលសេរី",
-      "អភិវឌ្ឍន៍អារម្មណ៍ លោតទឹកជ្រៅ",
-      "គោះជើងបច្ចេកទេសហែលសេរី និងផ្ងារ",
-      "បច្ចេកទេសចលនាដៃហែលសេរី និងផ្ងារ",
-      "បច្ចេកទេសលាតចេញតំណើរ ហែលសេរី",
-      "កំណត់របៀបហែលឲ្យបានត្រឹមត្រូវ៥០ម",
-    ],
-    image: intermediate,
-  },
-  {
-    id: "competitive-training",
-    title: "វគ្គកម្រិតខ្ពស់",
-    level: "Advanced",
-    description: [
-      "បន្តពីរកម្រិតមធ្យម ២ របៀបហែលផ្ងារ",
-      "អភិវឌ្ឍន៏កម្លាំងកាយ អំណត់ និងល្បឿន",
-      "គោះជើងបច្ចេកទេសហែលកង្កែប",
-      "បច្ចេកទេសចលនាដៃហែលកង្កែប",
-      "គោះជើងបច្ចេកទេសហែលមេអំបៅ",
-      "របៀបហែលសេរី ផ្ងារ និងកង្កែប",
-    ],
-    image: advaned,
-  },
-  {
-    id: "adult-beginners",
-    title: "វគ្គកម្រិតខ្ពស់បំផុត",
-    level: "Highest",
-    description: [
-      "បង្កើនបន្ទុកកម្លាំងការហ្វឹកហាត់កម្លាំងកាយ",
-      "បង្កើនកម្រិតជំនាញ របៀបហែលនីមួយៗ",
-      "បង្កើនបទពិសោធន៍ បច្ចេកទេស និងប្រកួត",
-      "បច្ចេកទេសពិសេស (លោត ត្រលប់ ដល់ទី)",
-      "កំណត់ថេរៈវេលា ជំនាញរបៀបហែល",
-      "កំណត់គោលដៅ នៃការប្រកួត",
-    ],
-    image: highest,
-  },
-];
 
 const ProgramsSection = () => {
   const [activeFilter, setActiveFilter] = useState("all");
   const [expandedProgramId, setExpandedProgramId] = useState(null);
+  const [programs, setPrograms] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPrograms = async () => {
+      try {
+        const response = await fetch('https://rithya.onrender.com/api/public/programs/');
+        if (response.ok) {
+          const data = await response.json();
+          setPrograms(data);
+        }
+      } catch (error) {
+        console.error('Error fetching programs data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPrograms();
+  }, []);
 
   const filters = [
     { id: "all", label: "ទាំងអស់" },
@@ -119,9 +76,15 @@ const ProgramsSection = () => {
         </div>
 
         {/* Mobile View with Horizontal Scroll */}
-        <div className="block md:hidden w-full overflow-x-auto scroll-smooth pb-4 no-scrollbar ">
-          <div className="flex gap-4 min-w-max px-2">
-            {filteredPrograms.map((program) => (
+        {loading ? (
+          <div className="text-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-aqua-500 mx-auto"></div>
+            <p className="text-gray-600 mt-4">Loading programs...</p>
+          </div>
+        ) : (
+          <div className="block md:hidden w-full overflow-x-auto scroll-smooth pb-4 no-scrollbar ">
+            <div className="flex gap-4 min-w-max px-2">
+              {filteredPrograms.map((program) => (
               <div
                 key={program.id}
                 className="min-w-[300px] flex-shrink-0 text-body snap-center"
@@ -129,7 +92,7 @@ const ProgramsSection = () => {
                 <Card className="overflow-hidden shadow-lg border-0">
                   <div className="w-full h-[250px] overflow-hidden">
                     <img
-                      src={program.image}
+                      src={program.image_url || program.image}
                       alt={program.title}
                       className=" h-full  transition-transform duration-700 hover:scale-110"
                     />
@@ -156,11 +119,9 @@ const ProgramsSection = () => {
                       </span>
                     </div>
                     {expandedProgramId === program.id ? (
-                      <ul className="text-gray-700 text-sm space-y-2 mb-6 list-disc list-inside">
-                        {program.description.map((item, idx) => (
-                          <li key={idx}>{item}</li>
-                        ))}
-                      </ul>
+                      <div className="text-gray-700 text-sm mb-6">
+                        {program.description}
+                      </div>
                     ) : (
                       <div className="mb-6 h-5"></div>
                     )}
@@ -180,15 +141,22 @@ const ProgramsSection = () => {
             ))}
           </div>
         </div>
+        )}
 
         {/* Desktop View */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-body">
-          {filteredPrograms.map((program) => (
-            <div key={program.id} className="hover-scale">
+        {loading ? (
+          <div className="text-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-aqua-500 mx-auto"></div>
+            <p className="text-gray-600 mt-4">Loading programs...</p>
+          </div>
+        ) : (
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-body">
+            {filteredPrograms.map((program) => (
+              <div key={program.id} className="hover-scale">
               <Card className="overflow-hidden shadow-lg border-0">
                 <div className="h-48 overflow-hidden">
                   <img
-                    src={program.image}
+                    src={program.image_url || program.image}
                     alt={program.title}
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                   />
@@ -215,11 +183,9 @@ const ProgramsSection = () => {
                     </span>
                   </div>
                   {expandedProgramId === program.id ? (
-                    <ul className="text-gray-700 text-sm space-y-2 mb-6 list-disc list-inside">
-                      {program.description.map((item, idx) => (
-                        <li key={idx}>{item}</li>
-                      ))}
-                    </ul>
+                    <div className="text-gray-700 text-sm mb-6">
+                      {program.description}
+                    </div>
                   ) : (
                     <div className="mb-6 h-5"></div>
                   )}
@@ -238,6 +204,7 @@ const ProgramsSection = () => {
             </div>
           ))}
         </div>
+        )}
       </div>
     </section>
   );
