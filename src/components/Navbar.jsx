@@ -174,7 +174,7 @@ const Navbar = ({ onAdminClick, user, onLogout }) => {
              >
                <span className="text-sm">Admin Login</span>
              </Button> */}
-             <a href="https://docs.google.com/forms/d/e/1FAIpQLSeh_IBmsqMSXlCWiLvPopAI7wB_B9KHF3Sh6zVgzU9pwo8-pQ/viewform?usp=sharing" className="w-full">
+             <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJVTG-E1btkkE1xUjvKcQjp12HV6EhYBDq9lLexwD3TThpqQ/viewform?usp=dialog" className="w-full">
                <Button className="bg-aqua-500 hover:bg-aqua-600 text-white w-full py-3 justify-center">
                  <span className="text-body1 text-sm">
                    ចុះឈ្មោះ
